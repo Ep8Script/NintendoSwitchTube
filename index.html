@@ -1,0 +1,138 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>YouTube</title>
+		<script src="jquery.min.js"></script>
+		<script src="app.js"></script>
+		<script src="https://apis.google.com/js/client.js?onload=googleApiClientReady"></script>
+		<link href="yts/img/favicon-vflz7uhzw.ico" rel="shortcut icon" type="image/x-icon">
+		<link href="style.min.css" rel="stylesheet">
+		<script>
+			 function keyWordsearch(){
+				gapi.client.setApiKey('AIzaSyAkEHUoEOh8NrrKvH26cT7jkXabKqb6CIg');
+				gapi.client.load('youtube', 'v3', function() {
+						makeRequest();
+				});
+			}
+			function makeRequest() {
+				var q = $('#query').val();
+				var request = gapi.client.youtube.search.list({
+						q: q,
+						type: 'video',
+						part: 'snippet', 
+						maxResults: 25
+				});
+				request.execute(function(response)  {                                                                                    
+						$('#results').empty()
+						$("#search-results").html("Search Results");
+						var srchItems = response.result.items;                      
+						$.each(srchItems, function(index, item) {
+							vidTitle = "<h4>"+item.snippet.title+"</h4>";  
+							vidThumburl = item.snippet.thumbnails.high.url;
+							id = item.id.videoId;
+							vidThumbimg = '<img id="thumb" src="'+vidThumburl+'" alt="No  Image Available.">';                   
+
+							$('#results').append("<a onclick=\'getVideo(\""+id+"\")'>" + vidTitle + "<br>" + vidThumbimg + "</a><hr>");                      
+						})  
+				})  
+			}
+		</script>
+		<style type="text/css">
+			a {
+				cursor: pointer;
+			}
+			body {
+				padding-top: 20px;
+				padding-bottom: 60px;
+			}
+
+			/* Custom container */
+			.container {
+				margin: 0 auto;
+				max-width: 1000px;
+			}
+			.container > hr {
+				margin: 30px 0;
+			}
+
+			/* Main marketing message and sign up button */
+			.jumbotron {
+				margin: 80px 0;
+				text-align: center;
+			}
+			.jumbotron h1 {
+				font-size: 80px;
+				line-height: 1;
+			}
+			.jumbotron .lead {
+				font-size: 24px;
+				line-height: 1.25;
+			}
+			.jumbotron .btn {
+				font-size: 21px;
+				padding: 14px 24px;
+			}
+			.jumbotron input {
+				font-size: 21px;
+				padding: 14px 24px;
+			}
+			.screenshots {
+				display:none;
+			} 
+			.hd {
+				text-align:center;
+			}
+			  
+			ul.thumbnails {
+				padding-top:30px;
+			}
+			  
+			.footer {
+				text-align:center;
+			}
+
+
+			video {  
+				width:100%; 
+				max-width:1920px; 
+				height:auto; 
+			}
+		</style>
+	</head>
+
+
+<body>
+	<div id="fb-root"></div>
+
+	<div class="container">
+      <!-- Jumbotron -->
+      <div class="jumbotron">
+        <div class="input-append">
+          <input class="span5 get-video" id="videourl" type="text" placeholder="Enter YouTube Video ID">
+          <button class="btn btn-success" id="url-submit" type="button">Load</button>
+        </div>
+        <p class="example">Example: f5uik5fgIaI</p>
+      </div>
+      <div class="row-fluid" id="custom" style="display:none;">
+        <div class="span12" style="text-align:center;">
+          <div id="ytvideo" style="margin:20px;">
+             
+          </div>   
+		 </div>
+		</div>
+		<!-- <label><button class="btn btn-success" id="upload-button">Upload to Videos</button></label> -->
+	<div class="jumbotron">
+		<h2>or:</h2>
+		<div class="input-append">
+			<label> <input id="query" placeholder="Search" type="text"/><button class="btn btn-success" id="search-button" onclick="keyWordsearch()">Search</button></label>    
+		</div>
+		<div id="container">
+		  <h3 id="search-results"></h3>
+		  <ul id="results"></ul>
+		</div>
+	</div>
+	</div>
+</body>
+</html>
