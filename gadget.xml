@@ -3,10 +3,6 @@
 <ModulePrefs title="iFrame"/>
 <Content type="html">
 <![CDATA[
-<script>
-var obj=document.getElementById("frame").parentNode;
-obj.scrollLeft=750;
-</script>
 <iframe src="https://ep8script.github.io/NintendoSwitchTube/" id="frame" frameborder="0" width="100%" height="600px"></iframe>
 ]]>
 </Content>
