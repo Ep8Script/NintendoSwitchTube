@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Module>
+<ModulePrefs title="iFrame"/>
+<Content type="html">
+<![CDATA[
+<iframe src="https://play.rainway.io" id="frame" frameborder="0" width="100%" height="600px"></iframe>
+]]>
+</Content>
+</Module>
