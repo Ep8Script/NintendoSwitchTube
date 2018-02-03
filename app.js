@@ -79,13 +79,13 @@ if (gamepad.init()) {
 }
 
 function SH() {
-	$("logo-link").html('<h2 style="text-align: center; font-size: 55px;"><span id="HS" style="color: black;">Switch</span><span id="HH" style="color: orange;">Hub</span></h2>');
+	$("#logo-link").html('<h2 style="text-align: center; font-size: 55px;"><span id="HS" style="color: black;">Switch</span><span id="HH" style="color: orange;">Hub</span></h2>');
 	$("input.get-video").attr("placeholder", "Enter Video ID");
 	$("#or-search").hide();
 	$(".example").html("Video ID following 'view_video.php?viewkey='");
 	$("#url-submit").after('<button class="btn btn-success" id="sh-submit" type="button">Load</button>');
 	$("#url-submit").hide();
-	$("#url-submit").click(function() {
+	$("#sh-submit").click(function() {
         $("#videourl").val() && shVideo($("#videourl").val())
     });
 }
