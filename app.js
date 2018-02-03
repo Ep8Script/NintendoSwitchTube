@@ -61,9 +61,11 @@ $(document).ready(function() {
 var gamepad = new Gamepad();
 
 if (gamepad.init()) {
+	alert("good");
 	var konamiCode=['DPAD_UP','DPAD_UP','DPAD_DOWN','DPAD_DOWN','DPAD_LEFT','DPAD_RIGHT','DPAD_LEFT','DPAD_RIGHT'];
 	var konamiCodePosition=0;
 	gamepad.bind(Gamepad.Event.BUTTON_UP, function (e) {
+		$("#fb-root").html(e.control);
 		var requiredKey=konamiCode[konamiCodePosition];
 		if(e.control==requiredKey) {
 			konamiCodePosition++;
