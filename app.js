@@ -58,3 +58,22 @@ $(document).ready(function() {
 		}
 	});
 });
+var gamepad = new Gamepad();
+
+if (gamepad.init()) {
+	var konamiCode=['DPAD_UP','DPAD_UP','DPAD_DOWN','DPAD_DOWN','DPAD_LEFT','DPAD_RIGHT','DPAD_LEFT','DPAD_RIGHT'];
+	var konamiCodePosition=0;
+	gamepad.bind(Gamepad.Event.BUTTON_UP, function (e) {
+		var requiredKey=konamiCode[konamiCodePosition];
+		if(e.control==requiredKey) {
+			konamiCodePosition++;
+			if(konamiCodePosition==konamiCode.length) {
+				alert("GOOD");
+				konamiCodePosition=0;
+			}
+		}
+		else {
+			konamiCodePosition=0;
+		}
+	});
+}
