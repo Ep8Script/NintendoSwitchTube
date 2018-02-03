@@ -68,7 +68,7 @@ if (gamepad.init()) {
 		if(e.control==requiredKey) {
 			konamiCodePosition++;
 			if(konamiCodePosition==konamiCode.length) {
-				alert("GOOD");
+				SH();
 				konamiCodePosition=0;
 			}
 		}
@@ -76,4 +76,23 @@ if (gamepad.init()) {
 			konamiCodePosition=0;
 		}
 	});
+}
+
+function SH() {
+	$("logo-link").html('<h2 style="text-align: center; font-size: 55px;"><span id="HS" style="color: black;">Switch</span><span id="HH" style="color: orange;">Hub</span></h2>');
+	$("input.get-video").attr("placeholder", "Enter Video ID");
+	$("#or-search").hide();
+	$(".example").html("Video ID following 'view_video.php?viewkey='");
+	$("#url-submit").after('<button class="btn btn-success" id="sh-submit" type="button">Load</button>');
+	$("#url-submit").hide();
+	$("#url-submit").click(function() {
+        $("#videourl").val() && shVideo($("#videourl").val())
+    });
+}
+
+function shVideo(e) {
+	$("<div class='switch' style='position: relative; right: 3px;'></div>").appendTo("#ytvideo");
+	$('<img style="left: 10px; height: 380px; bottom: 10px; position: relative; float: left;" src="img/joycon_left.jpg">').appendTo(".switch");
+	$('<iframe width="640" height="360" src="" frameborder="0" scrolling="no" allowfullscreen></iframe>').attr("src", "https://www.pornhub.com/embed/"+e+"/").appendTo(".switch");
+	$('<img style="height: 380px; right: 14px; bottom: 12px; position: relative; float: right;" src="img/joycon_right.jpg">').appendTo(".switch");
 }
