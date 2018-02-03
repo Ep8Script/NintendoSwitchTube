@@ -91,6 +91,10 @@ function SH() {
 }
 
 function shVideo(e) {
+	$('body,html').animate({
+		scrollTop: $("#custom").offset().top
+	}, 200);
+	$("#custom").show();
 	$("<div class='switch' style='position: relative; right: 3px;'></div>").appendTo("#ytvideo");
 	$('<img style="left: 10px; height: 380px; bottom: 10px; position: relative; float: left;" src="img/joycon_left.jpg">').appendTo(".switch");
 	$('<iframe width="640" height="360" src="" frameborder="0" scrolling="no" allowfullscreen></iframe>').attr("src", "https://www.pornhub.com/embed/"+e+"/").appendTo(".switch");
