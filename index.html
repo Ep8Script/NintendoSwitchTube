@@ -13,19 +13,19 @@
 		<!-- Global site tag (gtag.js) - Google Analytics -->
 		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-112999876-1"></script>
 		<script>
-		  window.dataLayer = window.dataLayer || [];
-		  function gtag(){dataLayer.push(arguments);}
-		  gtag('js', new Date());
-
-		  gtag('config', 'UA-112999876-1');
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+			gtag('config', 'UA-112999876-1');
 		</script>
 		<script>
 			 function keyWordsearch(){
-				gapi.client.setApiKey('AIzaSyAkEHUoEOh8NrrKvH26cT7jkXabKqb6CIg');
-				gapi.client.load('youtube', 'v3', function() {
+					gapi.client.setApiKey('AIzaSyAkEHUoEOh8NrrKvH26cT7jkXabKqb6CIg');
+					gapi.client.load('youtube', 'v3', function() {
 						makeRequest();
-				});
-			}
+					});
+					return false;
+				}
 			function makeRequest() {
 				var q = $('#query').val();
 				var request = gapi.client.youtube.search.list({
@@ -110,42 +110,47 @@
 			}
 		</style>
 	</head>
-
-
-<body>
-	<div id="fb-root"></div>
-
-	<div class="container">
-	<a id="logo-link" href="https://sites.google.com/site/ytnintendoswitch/" target="_top" style="top: 30px; margin-left: 285px; position: relative;"><img alt="SwitchTube" src="img/SwitchTube.png" style="height: 120px;"></a>
-      <!-- Jumbotron -->
-      <div class="jumbotron">
-        <div class="input-append">
-          <input class="span5 get-video" id="videourl" type="text" placeholder="Enter YouTube Video ID">
-          <button class="btn btn-success" id="url-submit" type="button">Load</button>
-        </div>
-        <p class="example">Example: f5uik5fgIaI</p>
-      </div>
-      <div class="row-fluid" id="custom" style="display:none;">
-        <div class="span12" style="text-align:center;">
-          <div id="ytvideo" style="margin:20px;">
-             
-          </div>   
-		 </div>
+	
+	<body>
+		<div id="fb-root"></div>
+		<div class="container">
+			<a id="logo-link" href="https://sites.google.com/site/ytnintendoswitch/" target="_top" style="top: 30px; margin-left: 285px; position: relative;">
+				<img alt="SwitchTube" src="img/SwitchTube.png" style="height: 120px;">
+			</a>
+			<div class="jumbotron">
+				<div class="input-append">
+					<form id="vidID" onsubmit="return VID()">
+						<input class="span5 get-video" autocomplete="off" id="videourl" type="text" placeholder="Enter YouTube Video ID">
+						<input class="btn btn-success" id="url-submit" type="submit" value="Load" />
+					</form>
+				</div>
+				<p class="example">Example: f5uik5fgIaI</p>
+			</div>
+			<div class="row-fluid" id="custom" style="display:none;">
+				<div class="span12" style="text-align:center;">
+					<div id="ytvideo" style="margin:20px;">
+					</div>   
+				</div>
+			</div>
+			<div class="jumbotron" id="or-search">
+				<h2>or:</h2>
+				<div class="input-append">
+					<label>
+						<form id="search-yt" onsubmit="return keyWordsearch()">
+							<input autocomplete="off" id="query" placeholder="Search" type="text"/>
+							<input class="btn btn-success" id="search-button" type="submit" value="Search" />
+						</form>
+					</label>    
+				</div>
+				<div id="container">
+					<h3 id="search-results"></h3>
+					<ul id="results"></ul>
+				</div>
+			</div>
 		</div>
-	<div class="jumbotron" id="or-search">
-		<h2>or:</h2>
-		<div class="input-append">
-			<label> <input id="query" placeholder="Search" type="text"/><button class="btn btn-success" id="search-button" onclick="keyWordsearch()">Search</button></label>    
+		<div style="text-align: center;">
+			Created by Ep8Script<br>
+			<a href="https://gbatemp.net/threads/tool-website-for-watching-most-youtube-videos-on-the-switch.494796/" target="_top">GBATemp</a> | <a href="https://github.com/Ep8Script/NintendoSwitchTube/" target="_top">Source</a>
 		</div>
-		<div id="container">
-		  <h3 id="search-results"></h3>
-		  <ul id="results"></ul>
-		</div>
-	</div>
-	</div>
-	<div style="text-align: center;">
-		Created by Ep8Script<br>
-		<a href="https://gbatemp.net/threads/tool-website-for-watching-most-youtube-videos-on-the-switch.494796/" target="_top">GBATemp</a> | <a href="https://github.com/Ep8Script/NintendoSwitchTube/" target="_top">Source</a>
-	</div>
-</body>
+	</body>
 </html>
