@@ -6,7 +6,7 @@ function getVideo(e) {
     o ? showVideo(o[0]) : alert("Invalid youtube link")
 	vidURL = o[0];
 	$.ajax({
-		  url: "https://www.googleapis.com/youtube/v3/videos?id="+o[0]+"&key=AIzaSyAkEHUoEOh8NrrKvH26cT7jkXabKqb6CIg&fields=items(snippet)&part=snippet", 
+		  url: "https://www.googleapis.com/youtube/v3/videos?id="+o[0]+"&key=AIzaSyDz3ScUk4bHlKpGhXqnBLwOp2csbRssbXo&fields=items(snippet)&part=snippet", 
 		  dataType: "jsonp",
 		  success: function(data){
 				   document.title = data.items[0].snippet.title+" - YouTube";    
