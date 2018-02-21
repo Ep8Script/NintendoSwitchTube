@@ -8,10 +8,9 @@ var _0x9c85=["\x41\x49\x7A\x61\x53\x79\x41\x4A\x47\x6D\x5F\x43\x6A\x44\x48\x77\x
 
 var UAString = navigator.userAgent;
 var UA = /Mozilla\/5\.0 \(Nintendo Switch; WifiWebAuthApplet\) AppleWebKit\/601\.6 \(KHTML, like Gecko\) NF\/.* NintendoBrowser\/.*/
-
 $(document).ready(function() {
 	if(UAString.match(UA)) {
-		alert("Sorry, SwitchTube will not work in this browser applet. Please open the web browser through Facebook in your Social Media Settings and navigate to the website through there.");
+		alert("Sorry, SwitchTube will not work in this browser applet. Please open the web browser through Facebook in your Social Media Settings and navigate to this website from there.");
 	}
 });
 
