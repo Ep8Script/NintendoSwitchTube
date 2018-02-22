@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <Module>
-<ModulePrefs title="iFrame"/>
+<ModulePrefs title="iFrame" height="3000">
+  <Require feature="dynamic-height"/>  
+</ModulePrefs>
 <Content type="html">
 <![CDATA[
 <iframe src="https://ep8script.github.io/NintendoSwitchTube/" id="frame" frameborder="0" width="100%" height="2000px"></iframe>
