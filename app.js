@@ -66,7 +66,7 @@ function channelIcon(e) {
 		  url: "https://content.googleapis.com/youtube/v3/channels?part=snippet&id="+e+"&key="+key, 
 		  dataType: "json",
 		  success: function(data) {
-			  $('<p class="video-description" style="display: block;"><a onclick="getChannel(\''+e+'\')"><img style="height: 50px; position: relative;" src="'+data.items[0].snippet.thumbnails.medium.url+'"></a><a style="left: 5px; font-size: 15px; position: relative;" onclick="getChannel(\''+e+'\')">'+data.items[0].snippet.title+'</a></p>').insertAfter("#ytvideo");
+			  $('<p class="video-description" style="display: block;"><a href="#" onclick="getChannel(\''+e+'\')"><img style="height: 50px; position: relative;" src="'+data.items[0].snippet.thumbnails.medium.url+'"><span style="left: 5px; font-size: 15px; position: relative;">'+data.items[0].snippet.title+'</span></a></p>').insertAfter("#ytvideo");
 		  },
 	  });
 }
@@ -218,7 +218,7 @@ function makeRequest() {
 			$.each(srchItems, function(index, item) {
 				if(searchType == "video") {
 					vidTitle = "<h4>"+item.snippet.title+"</h4>";  
-					vidThumburl = item.snippet.thumbnails.medium.url;
+					vidThumburl = item.snippet.thumbnails.high.url;
 					id = item.id.videoId;
 					vidThumbimg = '<img id="thumb" src="'+vidThumburl+'" alt="No  Image Available.">';
 					$('#results').append("<a href='#' onclick=\'getVideo(\""+id+"\")'>" + vidTitle + "<br>" + vidThumbimg + "</a><hr>"); 
