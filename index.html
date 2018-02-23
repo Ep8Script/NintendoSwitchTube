@@ -37,11 +37,12 @@
 			<div class="jumbotron" id="or-search">
 				<h2>or:</h2>
 				<div class="input-append">
+					<select id="search-type">
+						<option value="video">Videos</option>
+						<option value="channel">Channels</option>
+					</select>
 					<label>
-						<select id="search-type">
-							<option value="video">Videos</option>
-							<option value="channel">Channels</option>
-						</select><br><br>
+						<br>
 						<form id="search-yt" onsubmit="return keyWordsearch()">
 							<input autocomplete="off" id="query" placeholder="Search" type="text"/>
 							<input class="btn btn-success" id="search-button" type="submit" value="Search" />
