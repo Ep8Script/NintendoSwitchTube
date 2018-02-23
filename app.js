@@ -198,11 +198,18 @@ function keyWordsearch(){
 
 function makeRequest() {
 	var q = $('#query').val();
+	var max;
+	if(searchType == "video") {
+		max = 20;
+	}
+	else {
+		max = 12;
+	}
 	var request = gapi.client.youtube.search.list({
 			q: q,
 			type: searchType,
 			part: 'snippet', 
-			maxResults: 25
+			maxResults: max
 	});
 	request.execute(function(response)  {                                                                                    
 			$('#results').empty()
