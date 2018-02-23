@@ -1,0 +1,502 @@
+/* There's a lot of duplicates here, but I aimed to make this a little easier to read */
+.input-append :last-child.add-on, .input-append :last-child.btn-group > .dropdown-toggle, .input-append :last-child.btn {
+    -webkit-border-radius: 0 4px 4px 0;
+    -moz-border-radius: 0 4px 4px 0;
+    border-radius: 0 4px 4px 0;
+}
+
+a:focus {
+    outline: #333 dotted thin;
+    outline: -webkit-focus-ring-color auto 5px;
+    outline-offset: -2px;
+}
+
+a:active, a:hover {
+    outline: 0;
+}
+
+.container {
+    width: 940px;
+    margin: 0 auto;
+    max-width: 1000px;
+}
+
+img {
+    width: auto\9;
+    height: auto;
+    max-width: 100%;
+    vertical-align: middle;
+    border: 0;
+    -ms-interpolation-mode: bicubic;
+}
+
+button, input[type=button], input[type=reset], input[type=submit], input[type=radio], input[type=checkbox] {
+    cursor: pointer;
+}
+
+body { /*KEEP */
+	margin: 0;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 14px;
+	line-height: 20px;
+	color: #333;
+	background-color: #fff;
+	padding-top: 20px;
+	padding-bottom: 60px;
+}
+
+a {
+    color: #08c;
+    text-decoration: none;
+}
+
+a:focus, a:hover {
+    color: #005580;
+    text-decoration: underline;
+}
+
+.row-fluid [class*=span] {
+    display: block;
+    float: left;
+    width: 100%;
+    min-height: 30px;
+    margin-left: 2.127659574468085%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box
+}
+
+.row-fluid [class*=span]:first-child {	
+    margin-left: 0;
+}
+
+p {
+    margin: 0 0 10px
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 10px 0;
+    font-family: inherit;
+    font-weight: 700;
+    line-height: 20px;
+    color: inherit;
+    text-rendering: optimizelegibility;
+}
+
+h1, h2, h3 {
+    line-height: 40px;
+}
+
+h1 {
+    font-size: 38.5px
+}
+
+h2 {
+    font-size: 31.5px;
+}
+
+h3 {
+    font-size: 24.5px;
+}
+
+h2 small,
+h4 {
+    font-size: 17.5px
+}
+
+ol, ul {
+    padding: 0;
+    margin: 0 0 10px 25px
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+textarea {
+    height: auto
+}
+
+.input-append, .input-prepend {
+    display: inline-block;
+    margin-bottom: 10px;
+    font-size: 0;
+    white-space: nowrap;
+    vertical-align: middle;
+}
+
+.btn-success {
+    color: #fff;
+    background-color: #5bb75b;
+    background-image: -moz-linear-gradient(top, #62c462, #51a351);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#62c462), to(#51a351));
+    background-image: -webkit-linear-gradient(top, #62c462, #51a351);
+    background-image: -o-linear-gradient(top, #62c462, #51a351);
+    background-image: linear-gradient(to bottom, #62c462, #51a351);
+    border-color: #51a351 #51a351 #387038;
+    border-color: rgba(0, 0, 0, .1) rgba(0, 0, 0, .1) rgba(0, 0, 0, .25);
+    filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#ff62c462', endColorstr='#ff51a351', GradientType=0);
+    filter: progid: DXImageTransform.Microsoft.gradient(enabled=false)
+}
+
+a {
+    cursor: pointer;
+}
+
+.jumbotron {
+    margin: 80px 0;
+    text-align: center;
+}
+
+.jumbotron .btn {
+    font-size: 21px;
+    padding: 14px 24px;
+	margin-left: -1px;
+}
+
+.jumbotron input {
+    font-size: 21px;
+    padding: 14px 24px
+}
+
+.switch {
+	position: relative;
+	right: 3px;
+}
+.switch img[src$="left.jpg"] {
+	left: 10px;
+	height: 380px;
+	bottom: 10px;
+	position: relative;
+	float: left;
+}
+.switch img[src$="right.jpg"] {
+	height: 380px;
+	right: 14px;
+	bottom: 12px;
+	position: relative;
+	float: right;
+}
+.give-feedback {
+	color: red;
+}
+utton, input, select, textarea {
+	margin: 0;
+	font-size: 100%;
+	vertical-align: middle;
+}
+.navbar-search .search-query, button, input, select, textarea {
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+button, input[type=button], input[type=reset], input[type=submit], input[type=radio], input[type=checkbox] {
+	cursor: pointer;
+}
+button, input, label, select, textarea {
+	font-weight: 400;
+	line-height: 20px;
+}
+.uneditable-input, input, textarea {
+	width: 206px;
+}
+.uneditable-input, input, textarea {
+	margin-left: 0px;
+}
+.btn, .pagination-centered {
+	text-align: center;
+}
+.btn, .btn-group, .btn-group-vertical {
+	display: inline-block;
+}
+.btn, .btn-danger, .btn-info, .btn-inverse, .btn-primary, .btn-success, .btn-warning, .navbar-inner, .navbar-inverse .btn-navbar, .navbar-inverse .navbar-inner, .progress, .progress .bar, .progress .bar-danger, .progress .bar-info, .progress .bar-success, .progress .bar-warning, .progress-danger .bar, .progress-info .bar, .progress-success .bar, .progress-warning .bar {
+	background-repeat: repeat-x;
+}
+.btn {
+	padding: 4px 12px;
+	margin-bottom: 0px;
+	font-size: 14px;
+	line-height: 20px;
+	color: #333;
+	text-shadow: 0px 1px 1px rgba(255,255,255,0.75);
+	vertical-align: middle;
+	cursor: pointer;
+	background-color: #f5f5f5;
+	background-image: -moz-linear-gradient(top,#fff,#e6e6e6);
+	background-image: -webkit-gradient(linear,0 0,0 100%,from(#fff),to(#e6e6e6));
+	background-image: -webkit-linear-gradient(top,#fff,#e6e6e6);
+	background-image: -o-linear-gradient(top,#fff,#e6e6e6);
+	background-image: linear-gradient(to bottom,#fff,#e6e6e6);
+	border: 1px solid #ccc;
+	border-color: #e6e6e6 #e6e6e6 #bfbfbf;
+	border-color: rgba(0, 0, 0, .1) rgba(0, 0, 0, .1) rgba(0, 0, 0, .25);
+	border-bottom-color: #b3b3b3;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffe6e6e6', GradientType=0);
+	filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+	-webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, .2), 0 1px 2px rgba(0, 0, 0, .05);
+	-moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, .2), 0 1px 2px rgba(0, 0, 0, .05);
+	box-shadow: inset 0px 1px 0px rgba(255,255,255,0.2), 0px 1px 2px rgba(0,0,0,0.05);
+}
+.btn-danger, .btn-info, .btn-inverse, .btn-primary, .btn-success, .btn-warning, .navbar .btn-navbar {
+	text-shadow: 0px -1px 0px rgba(0,0,0,0.25);
+}
+.btn-success {
+	color: #fff;
+	background-color: #5bb75b;
+	background-image: -moz-linear-gradient(top,#62c462,#51a351);
+	background-image: -webkit-gradient(linear,0 0,0 100%,from(#62c462),to(#51a351));
+	background-image: -webkit-linear-gradient(top,#62c462,#51a351);
+	background-image: -o-linear-gradient(top,#62c462,#51a351);
+	background-image: linear-gradient(to bottom,#62c462,#51a351);
+	border-color: #51a351 #51a351 #387038;
+	border-color: rgba(0, 0, 0, .1) rgba(0, 0, 0, .1) rgba(0, 0, 0, .25);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff62c462', endColorstr='#ff51a351', GradientType=0);
+	filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+}
+button, html input[type=button], input[type=reset], input[type=submit] {
+	cursor: pointer;
+	-webkit-appearance: button;
+}
+input[type=button], input[type=reset], input[type=file], input[type=image], input[type=submit], input[type=radio], input[type=checkbox] {
+	width: auto;
+}
+.input-append .dropdown-menu, .input-append .popover, .input-append .uneditable-input, .input-append input, .input-append select, .input-prepend .dropdown-menu, .input-prepend .popover, .input-prepend .uneditable-input, .input-prepend input, .input-prepend select {
+	font-size: 14px;
+}
+.input-append .uneditable-input, .input-append input, .input-append select, .input-prepend .uneditable-input, .input-prepend input, .input-prepend select {
+	position: relative;
+	margin-bottom: 0px;
+	vertical-align: top;
+	-webkit-border-radius: 0 4px 4px 0;
+	-moz-border-radius: 0 4px 4px 0;
+	border-radius: 0 4px 4px 0;
+}
+.input-append .uneditable-input, .input-append input, .input-append select, .input-prepend :first-child.add-on, .input-prepend :first-child.btn {
+	-webkit-border-radius: 4px 0 0 4px;
+	-moz-border-radius: 4px 0 0 4px;
+	border-radius: 4px 0 0 4px;
+}
+.jumbotron input {
+	font-size: 21px;
+	padding: 14px 24px;
+}
+.input-append .add-on, .input-append .btn, .input-append .btn-group > .dropdown-toggle, .input-prepend .add-on, .input-prepend .btn, .input-prepend .btn-group > .dropdown-toggle {
+	vertical-align: top;
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	border-radius: 0;
+}
+.input-append .add-on, .input-append .btn, .input-append .btn-group {
+	margin-left: -1px;
+}
+.btn.active, .btn.disabled, .btn:active, .btn:focus, .btn:hover, [disabled].btn {
+	color: #333;
+	background-color: #e6e6e6;
+}
+.btn:focus, .btn:hover {
+	color: #333;
+	text-decoration: none;
+	background-position: 0 -15px;
+	-webkit-transition: background-position .1s linear;
+	-moz-transition: background-position .1s linear;
+	-o-transition: background-position .1s linear;
+	transition: background-position .1s linear;
+}
+.btn:focus {
+	outline: #333 dotted thin;
+	outline: -webkit-focus-ring-color auto 5px;
+	outline-offset: -2px;
+}
+.btn-success.active, .btn-success.disabled, .btn-success:active, .btn-success:focus, .btn-success:hover, [disabled].btn-success {
+	color: #fff;
+	background-color: #51a351;
+}
+.jumbotron .btn {
+	font-size: 21px;
+	padding: 14px 24px;
+}
+.btn-group > .btn.active, .btn-group > .btn:active, .btn-group > .btn:focus, .btn-group > .btn:hover, .input-append .uneditable-input:focus, .input-append input:focus, .input-prepend .uneditable-input:focus, .input-prepend input:focus {
+	z-index: 2;
+}
+.input-append :last-child.add-on, .input-append :last-child.btn-group > .dropdown-toggle, .input-append :last-child.btn {
+	-webkit-border-radius: 0 4px 4px 0;
+	-moz-border-radius: 0 4px 4px 0;
+	border-radius: 0 4px 4px 0;
+}
+label {
+	display: block;
+	margin-bottom: 5px;
+}
+.input-append, .input-prepend {
+	display: inline-block;
+	margin-bottom: 10px;
+	font-size: 0px;
+	white-space: nowrap;
+	vertical-align: middle;
+}
+.jumbotron {
+	margin: 80px 0;
+	text-align: center;
+}
+.container, .navbar-fixed-bottom .container, .navbar-fixed-top .container, .navbar-static-top .container, .span12 {
+	width: 940px;
+}
+.container {
+	margin-right: auto;
+	margin-left: auto;
+}
+.container {
+	margin: 0 auto;
+	max-width: 1000px;
+}
+.clearfix::after, .container-fluid::after, .container::after, .dl-horizontal::after, .row-fluid::after, .row::after {
+	clear: both;
+}
+.container-fluid::after, .container-fluid::before, .container::after, .container::before {
+	display: table;
+	line-height: 0;
+	content: "";
+}
+.img-polaroid, body, select {
+	background-color: #fff;
+}
+button, input, select, textarea {
+	margin: 0;
+	font-size: 100%;
+	vertical-align: middle;
+}
+.navbar-search .search-query, button, input, select, textarea {
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+button, input, label, select, textarea {
+	font-weight: 400;
+	line-height: 20px;
+}
+.uneditable-input, input, textarea {
+	width: 206px;
+}
+.uneditable-input, input, textarea {
+	margin-left: 0px;
+}
+[class*=span] {
+	float: left;
+	min-height: 1px;
+	margin-left: 20px;
+}
+.span5 {
+	width: 380px;
+}
+.uneditable-input, input[type=text], input[type=password], input[type=datetime], input[type=datetime-local], input[type=date], input[type=month], input[type=time], input[type=week], input[type=number], input[type=email], input[type=url], input[type=tel], input[type=color], input[type=search], select, textarea {
+	display: inline-block;
+	height: 20px;
+	padding: 4px 6px;
+	margin-bottom: 10px;
+	font-size: 14px;
+	line-height: 20px;
+	color: #555;
+	vertical-align: middle;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+}
+.uneditable-input, input[type=text], input[type=password], input[type=datetime], input[type=datetime-local], input[type=date], input[type=month], input[type=time], input[type=week], input[type=number], input[type=email], input[type=url], input[type=tel], input[type=color], input[type=search], textarea {
+	background-color: #fff;
+	border: 1px solid #ccc;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+	-moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+	box-shadow: inset 0px 1px 1px rgba(0,0,0,0.075);
+	-webkit-transition: border linear .2s, box-shadow linear .2s;
+	-moz-transition: border linear .2s, box-shadow linear .2s;
+	-o-transition: border linear .2s, box-shadow linear .2s;
+	transition: border linear .2s, box-shadow linear .2s;
+}
+.row-fluid [class*=span].uneditable-input, .row-fluid input[class*=span], .row-fluid select[class*=span], .row-fluid textarea[class*=span], [class*=span].uneditable-input, input[class*=span], select[class*=span], textarea[class*=span] {
+	float: none;
+	margin-left: 0px;
+}
+.uneditable-input.span5, input.span5, textarea.span5 {
+	width: 366px;
+}
+.input-append .dropdown-menu, .input-append .popover, .input-append .uneditable-input, .input-append input, .input-append select, .input-prepend .dropdown-menu, .input-prepend .popover, .input-prepend .uneditable-input, .input-prepend input, .input-prepend select {
+	font-size: 14px;
+}
+.input-append .uneditable-input, .input-append input, .input-append select, .input-prepend .uneditable-input, .input-prepend input, .input-prepend select {
+	position: relative;
+	margin-bottom: 0px;
+	vertical-align: top;
+	-webkit-border-radius: 0 4px 4px 0;
+	-moz-border-radius: 0 4px 4px 0;
+	border-radius: 0 4px 4px 0;
+}
+.input-append .uneditable-input, .input-append input, .input-append select, .input-prepend :first-child.add-on, .input-prepend :first-child.btn {
+	-webkit-border-radius: 4px 0 0 4px;
+	-moz-border-radius: 4px 0 0 4px;
+	border-radius: 4px 0 0 4px;
+}
+.jumbotron input {
+	font-size: 21px;
+	padding: 14px 24px;
+}
+.btn-group > .btn.active, .btn-group > .btn:active, .btn-group > .btn:focus, .btn-group > .btn:hover, .input-append .uneditable-input:focus, .input-append input:focus, .input-append select:focus, .input-prepend .uneditable-input:focus, .input-prepend input:focus, .input-prepend select:focus {
+	z-index: 2;
+}
+.uneditable-input:focus, input[type=text]:focus, input[type=password]:focus, input[type=datetime]:focus, input[type=datetime-local]:focus, input[type=date]:focus, input[type=month]:focus, input[type=time]:focus, input[type=week]:focus, input[type=number]:focus, input[type=email]:focus, input[type=url]:focus, input[type=tel]:focus, input[type=color]:focus, input[type=search]:focus, textarea:focus {
+	border-color: rgba(82, 168, 236, .8);
+	outline: 0;
+	outline: dotted thin	;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(82, 168, 236, .6);
+	-moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(82, 168, 236, .6);
+	box-shadow: inset 0px 1px 1px rgba(0,0,0,0.075), 0px 0px 8px rgba(82,168,236,0.6);
+}
+.input-append [class*=span].uneditable-input, .input-append input[class*=span], .input-prepend [class*=span].uneditable-input, .input-prepend input[class*=span], .row-fluid .input-append [class*=span], .row-fluid .input-prepend [class*=span], .row-fluid [class*=span].uneditable-input, .row-fluid input[class*=span], .row-fluid select[class*=span], .row-fluid textarea[class*=span] {
+	display: inline-block;
+}
+.input-append, .input-prepend {
+	display: inline-block;
+	margin-bottom: 10px;
+	font-size: 0px;
+	white-space: nowrap;
+	vertical-align: middle;
+}
+.jumbotron {
+	margin: 80px 0;
+	text-align: center;
+}
+.container, .navbar-fixed-bottom .container, .navbar-fixed-top .container, .navbar-static-top .container, .span12 {
+	width: 940px;
+}
+.container {
+	margin-right: auto;
+	margin-left: auto;
+}
+.container {
+	margin: 0 auto;
+	max-width: 1000px;
+}
+.clearfix::after, .container-fluid::after, .container::after, .dl-horizontal::after, .row-fluid::after, .row::after {
+	clear: both;
+}
+.container-fluid::after, .container-fluid::before, .container::after, .container::before {
+	display: table;
+	line-height: 0;
+	content: "";
+}
+.img-polaroid, body, select {
+	background-color: #fff;
+}
+#search-type {
+	width: 200px;
+	height: 30px;
+}
+#results .channel-thumb {
+	height: 100px !important;
+	margin-top: 10px;
+}
+.channel-title {
+    font-size: 20px;
+}
+.channel-video-thumb {
+	height: 100px;
+}
