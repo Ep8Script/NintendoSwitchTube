@@ -189,7 +189,7 @@ utton, input, select, textarea {
 .navbar-search .search-query, button, input, select, textarea {
 	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 }
-button, input[type=button], input[type=reset], input[type=submit], input[type=radio], input[type=checkbox], label, select {
+button, input[type=button], input[type=reset], input[type=submit], input[type=radio], input[type=checkbox], label {
 	cursor: pointer;
 }
 button, input, label, select, textarea {
@@ -317,7 +317,7 @@ input[type=button], input[type=reset], input[type=file], input[type=image], inpu
 	font-size: 21px;
 	padding: 14px 24px;
 }
-.btn-group > .btn.active, .btn-group > .btn:active, .btn-group > .btn:focus, .btn-group > .btn:hover, .input-append .uneditable-input:focus, .input-append input:focus, .input-append select:focus, .input-prepend .uneditable-input:focus, .input-prepend input:focus, .input-prepend select:focus {
+.btn-group > .btn.active, .btn-group > .btn:active, .btn-group > .btn:focus, .btn-group > .btn:hover, .input-append .uneditable-input:focus, .input-append input:focus, .input-prepend .uneditable-input:focus, .input-prepend input:focus {
 	z-index: 2;
 }
 .input-append :last-child.add-on, .input-append :last-child.btn-group > .dropdown-toggle, .input-append :last-child.btn {
