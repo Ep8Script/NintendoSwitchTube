@@ -219,7 +219,7 @@ function makeRequest() {
 				}
 				else {
 					channelName = item.snippet.title;  
-					channelImage = item.snippet.thumbnails.medium.url;
+					channelImage = item.snippet.thumbnails.default.url;
 					id = item.id.channelId;
 					channelThumb = '<img class="channel-thumb" src="'+channelImage+'" alt="'+channelName+'">';
 					$('#results').append("<a onclick=\'getChannel(\""+id+"\")'><span class='channel-title'>" + channelName + "</span><br>" + channelThumb + "</a><hr>"); 
