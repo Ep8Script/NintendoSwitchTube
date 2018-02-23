@@ -223,10 +223,6 @@ function makeRequest() {
 	})  
 }
 
-$("#search-yt #query").click(function() {
-	$(this).focus();
-});
-
 function sendFeedback() {
 	var name = $("#feedback-name").val();
 	var message = $("#feedback-message").val();
