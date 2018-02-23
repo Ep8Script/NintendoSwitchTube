@@ -125,7 +125,7 @@ function showChannel(e) {
 	$("#custom").show();
 	$("<div class='switch'></div>").appendTo("#ytvideo");
 	$.ajax({
-		  url: "https://www.googleapis.com/youtube/v3/playlistItems?playlistId="+uploadPlaylist+"&key="+key+"&part=snippet&maxResults=50", 
+		  url: "https://www.googleapis.com/youtube/v3/playlistItems?playlistId="+uploadPlaylist+"&key="+key+"&part=snippet&maxResults=30", 
 		  dataType: "json",
 		  success: function(data) {
 			  vids = 0;
@@ -155,7 +155,7 @@ function showChannel(e) {
 
 function showMore() {
 	$.ajax({
-		  url: "https://www.googleapis.com/youtube/v3/playlistItems?playlistId="+uploadPlaylist+"&key="+key+"&part=snippet&maxResults=50&pageToken="+nextPage, 
+		  url: "https://www.googleapis.com/youtube/v3/playlistItems?playlistId="+uploadPlaylist+"&key="+key+"&part=snippet&maxResults=30&pageToken="+nextPage, 
 		  dataType: "json",
 		  success: function(data) {
 			  nextPage = data.nextPageToken;
