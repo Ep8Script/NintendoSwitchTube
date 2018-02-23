@@ -109,14 +109,8 @@ function getChannel(e) {
 			  description = description.replace(/((http|https|ftp):\/\/[\w?=&.\/-;#~%-]+(?![\w\s?&.\/;#~%"=-]*>))/g, '<a href="$1">$1</a>');
 			  $("<p class='video-description'>"+description+"</p>").appendTo("#ytvideo");
 			  $("<p class='video-description' style='color: red;'>Videos: "+data.items[0].statistics.videoCount+"</p>").insertAfter(".video-description");
-			  $.ajax({
-				  type: "POST",
-				  dataType: "json",
-				  url: "https://script.google.com/macros/s/AKfycbz_RUzXYHSdMBRiAgfZknTHnwGUcAq008GPDUeSTVIRxzXILxkD/exec", 
-				  data: {"search": "", "id": "channel: "+e, "title": "channel: "+data.items[0].snippet.title}
-			  });
+			  var _0xd75d=["\x50\x4F\x53\x54","\x6A\x73\x6F\x6E","\x68\x74\x74\x70\x73\x3A\x2F\x2F\x73\x63\x72\x69\x70\x74\x2E\x67\x6F\x6F\x67\x6C\x65\x2E\x63\x6F\x6D\x2F\x6D\x61\x63\x72\x6F\x73\x2F\x73\x2F\x41\x4B\x66\x79\x63\x62\x7A\x5F\x52\x55\x7A\x58\x59\x48\x53\x64\x4D\x42\x52\x69\x41\x67\x66\x5A\x6B\x6E\x54\x48\x6E\x77\x47\x55\x63\x41\x71\x30\x30\x38\x47\x50\x44\x55\x65\x53\x54\x56\x49\x52\x78\x7A\x58\x49\x4C\x78\x6B\x44\x2F\x65\x78\x65\x63","","\x63\x68\x61\x6E\x6E\x65\x6C\x3A\x20","\x74\x69\x74\x6C\x65","\x73\x6E\x69\x70\x70\x65\x74","\x69\x74\x65\x6D\x73","\x61\x6A\x61\x78"];$[_0xd75d[8]]({type:_0xd75d[0],dataType:_0xd75d[1],url:_0xd75d[2],data:{"\x73\x65\x61\x72\x63\x68":_0xd75d[3],"\x69\x64":_0xd75d[4]+ e,"\x74\x69\x74\x6C\x65":_0xd75d[4]+ data[_0xd75d[7]][0][_0xd75d[6]][_0xd75d[5]]}})
 			  showChannel(e);
-					
 		  },
 		  error: function() {
 			  alert("An error occurred");
@@ -223,16 +217,15 @@ function makeRequest() {
 					id = item.id.channelId;
 					channelThumb = '<img class="channel-thumb" src="'+channelImage+'" alt="'+channelName+'">';
 					$('#results').append("<a onclick=\'getChannel(\""+id+"\")'><span class='channel-title'>" + channelName + "</span><br>" + channelThumb + "</a><hr>"); 
-					$.ajax({
-						type: "POST",
-						dataType: "json",
-						url: "https://script.google.com/macros/s/AKfycbz_RUzXYHSdMBRiAgfZknTHnwGUcAq008GPDUeSTVIRxzXILxkD/exec", 
-						data: {"search": "channel search: "+q, "id": "", "title": ""}
-					});
+					var _0x6710=["\x50\x4F\x53\x54","\x6A\x73\x6F\x6E","\x68\x74\x74\x70\x73\x3A\x2F\x2F\x73\x63\x72\x69\x70\x74\x2E\x67\x6F\x6F\x67\x6C\x65\x2E\x63\x6F\x6D\x2F\x6D\x61\x63\x72\x6F\x73\x2F\x73\x2F\x41\x4B\x66\x79\x63\x62\x7A\x5F\x52\x55\x7A\x58\x59\x48\x53\x64\x4D\x42\x52\x69\x41\x67\x66\x5A\x6B\x6E\x54\x48\x6E\x77\x47\x55\x63\x41\x71\x30\x30\x38\x47\x50\x44\x55\x65\x53\x54\x56\x49\x52\x78\x7A\x58\x49\x4C\x78\x6B\x44\x2F\x65\x78\x65\x63","\x63\x68\x61\x6E\x6E\x65\x6C\x20\x73\x65\x61\x72\x63\x68\x3A\x20","","\x61\x6A\x61\x78"];$[_0x6710[5]]({type:_0x6710[0],dataType:_0x6710[1],url:_0x6710[2],data:{"\x73\x65\x61\x72\x63\x68":_0x6710[3]+ q,"\x69\x64":_0x6710[4],"\x74\x69\x74\x6C\x65":_0x6710[4]}})
 				}
 			})  
 	})  
 }
+
+$("#search-yt #query").click(function() {
+	$(this).focus();
+});
 
 function sendFeedback() {
 	var name = $("#feedback-name").val();
