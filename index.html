@@ -14,15 +14,11 @@
 	</head>
 	
 	<body>
-		<button id="sign-in-or-out-button" style="margin-left: 25px">Sign In/Authorize</button>
-		<button id="revoke-access-button" style="display: none; margin-left: 25px">Revoke access</button>
-		<div id="auth-status" style="display: inline; padding-left: 25px"></div><hr>
 		<div id="fb-root"></div>
 		<div class="container">
 			<a id="logo-link" href="https://sites.google.com/site/ytnintendoswitch/" target="_top" style="top: 30px; margin-left: 285px; position: relative;">
 				<img alt="SwitchTube" src="img/SwitchTube.png" style="height: 120px;">
 			</a>
-			<input class="btn btn-success" id="login-button" type="submit" onclick="startLogin()" value="Login" />
 			<div class="jumbotron">
 				<div class="input-append">
 					<form id="vidID" onsubmit="return VID()">
@@ -76,7 +72,5 @@
 				</form>
 			</div>
 		</div>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-		<script async defer src="https://apis.google.com/js/api.js" onload="this.onload=function(){};handleClientLoad()" onreadystatechange="if (this.readyState === 'complete') this.onload()"></script>
 	</body>
 </html>
