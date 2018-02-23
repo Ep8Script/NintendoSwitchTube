@@ -189,7 +189,7 @@ utton, input, select, textarea {
 .navbar-search .search-query, button, input, select, textarea {
 	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 }
-button, input[type=button], input[type=reset], input[type=submit], input[type=radio], input[type=checkbox], label {
+button, input[type=button], input[type=reset], input[type=submit], input[type=radio], input[type=checkbox] {
 	cursor: pointer;
 }
 button, input, label, select, textarea {
