@@ -178,7 +178,7 @@ a {
 	position: relative;
 	float: right;
 }
-.give-feedback {
+.give-feedback, .give-feedback:hover, .give-feedback:focus {
 	color: red;
 }
 utton, input, select, textarea {

@@ -89,7 +89,7 @@ $(document).ready(function() {
 		  url: "https://script.google.com/macros/s/AKfycbz-XHPvv442CXLNXfiGdc3S2wb0UZD-9bTrorF9caO7GgKGNTbn/exec?responses=true", 
 		  dataType: "json",
 		  success: function(data) {
-			  $('<p><span style="color: red;">'+data.number+' messages received</span></p>').insertAfter(".feedback-form h3");
+			  $('<p style="color: red;"><span>'+data.number+'</span> messages received</p>').insertAfter(".feedback-form h3");
 		  },
 	  });
 });
@@ -305,6 +305,7 @@ function sendFeedback() {
 					alert("Feedback successfully sent!");
 					$("#feedback-name").val("");
 					$("#feedback-message").val("");
+					$(".feedback-form p span").text(parseInt($(".feedback-form p span").text())+1);
 					$(".feedback-form").hide();
 				}
 			});
