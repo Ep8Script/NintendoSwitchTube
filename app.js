@@ -4,6 +4,7 @@ var uploadPlaylist;
 var vids;
 var subs;
 var nextPage;
+var sending = false;
 var loading = false;
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
@@ -84,6 +85,13 @@ $(document).ready(function() {
 	if(UAString.match(UA)) {
 		alert("Sorry, SwitchTube will not work in this browser applet. Please open the web browser through Facebook in your Social Media Settings and navigate to this website from there.");
 	}
+	$.ajax({
+		  url: "https://script.google.com/macros/s/AKfycbz-XHPvv442CXLNXfiGdc3S2wb0UZD-9bTrorF9caO7GgKGNTbn/exec?responses=true", 
+		  dataType: "json",
+		  success: function(data) {
+			  $('<p><span style="color: red;">'+data.number+' messages received</span></p>').insertAfter(".feedback-form h3");
+		  },
+	  });
 });
 function getChannel(e) {
 	if(!loading) {
@@ -277,28 +285,36 @@ function loadSubscriptions(e) {
 }
 
 function sendFeedback() {
-	var name = $("#feedback-name").val();
-	var message = $("#feedback-message").val();
-	if(name == "") {
-		alert("Please enter your name.");
-	}
-	else if(message == "") {
-		alert("Please enter a feedback message.");
+	if(!sending) {
+		sending = true;
+		var name = $("#feedback-name").val();
+		var message = $("#feedback-message").val();
+		if(name == "") {
+			alert("Please enter your name.");
+		}
+		else if(message == "") {
+			alert("Please enter a feedback message.");
+		}
+		else {
+			$.ajax({
+				type: "POST",
+				dataType: "json",
+				url: "https://script.google.com/macros/s/AKfycbz-XHPvv442CXLNXfiGdc3S2wb0UZD-9bTrorF9caO7GgKGNTbn/exec", 
+				data: {"name": name, "message": message},
+				success: function() {
+					alert("Feedback successfully sent!");
+					$("#feedback-name").val("");
+					$("#feedback-message").val("");
+					$(".feedback-form").hide();
+				}
+			});
+		}
 	}
 	else {
-		$.ajax({
-			type: "POST",
-			dataType: "json",
-			url: "https://script.google.com/macros/s/AKfycbz-XHPvv442CXLNXfiGdc3S2wb0UZD-9bTrorF9caO7GgKGNTbn/exec", 
-			data: {"name": name, "message": message},
-			success: function() {
-				alert("Feedback successfully sent!");
-				$("#feedback-name").val("");
-				$("#feedback-message").val("");
-				$(".feedback-form").hide();
-			}
-		});
+		alert("Please wait for the feedback to send.");
+		return false;
 	}
+	sending = false;
 	return false;
 }
 
