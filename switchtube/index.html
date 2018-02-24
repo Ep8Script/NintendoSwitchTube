@@ -13,20 +13,13 @@
 		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-112999876-1"></script>
 		<script>
 			  var GoogleAuth;
+			  var clientToken;
 			  var SCOPE = 'https://www.googleapis.com/auth/youtube';
 			  function handleClientLoad() {
-			    // Load the API's client and auth2 modules.
-			    // Call the initClient function after the modules load.
 			    gapi.load('client:auth2', initClient);
 			  }
 
 			  function initClient() {
-			    // Retrieve the discovery document for version 3 of Google Drive API.
-			    // In practice, your app can retrieve one or more discovery documents.
-
-			    // Initialize the gapi.client object, which app uses to make API requests.
-			    // Get API key and client ID from API Console.
-			    // 'scope' field specifies space-delimited list of access scopes.
 			    gapi.client.init({
 			        'apiKey': key,
 			        'clientId': '326112653788-6oa7ejsc9dgproj8slirnlj9rm9aoapa.apps.googleusercontent.com',
@@ -34,7 +27,6 @@
 			    }).then(function () {
 			      GoogleAuth = gapi.auth2.getAuthInstance();
 
-			      // Listen for sign-in state changes.
 			      GoogleAuth.isSignedIn.listen(updateSigninStatus);
 
 			      // Handle initial sign-in state. (Determine if user is already signed in.)
@@ -45,9 +37,6 @@
 			      //      "Sign In/Authorize" button.
 			      $('#sign-in-or-out-button').click(function() {
 			        handleAuthClick();
-			      }); 
-			      $('#revoke-access-button').click(function() {
-			        revokeAccess();
 			      }); 
 			    });
 			  }
@@ -62,23 +51,19 @@
 			    }
 			  }
 
-			  function revokeAccess() {
-			    GoogleAuth.disconnect();
-			  }
-
 			  function setSigninStatus(isSignedIn) {
 			    var user = GoogleAuth.currentUser.get();
+				
+				
 			    var isAuthorized = user.hasGrantedScopes(SCOPE);
 			    if (isAuthorized) {
-			      $('#sign-in-or-out-button').html('Sign out');
-			      $('#revoke-access-button').css('display', 'inline-block');
-			      $('#auth-status').html('You are currently signed in and have granted ' +
-			          'access to this app.');
+			      $('#sign-in-or-out-button').html('Log out');
+			      $('#auth-status').html("You are currently logged in as "+user.w3.ig+".");
+			      clientToken = user.Zi.access_token;
+				  $('<img style="height: 30px; margin-left: 10px" src="'+user.w3.Paa+'">').prependTo(".yt-authorize");
 			    } else {
-			      $('#sign-in-or-out-button').html('Sign In/Authorize');
-			      $('#revoke-access-button').css('display', 'none');
-			      $('#auth-status').html('You have not authorized this app or you are ' +
-			          'signed out.');
+			      $('#sign-in-or-out-button').html('Log in');
+			      $('#auth-status').html("Log in to authorize your account with SwitchTube.");
 			    }
 			  }
 
@@ -89,9 +74,10 @@
 	</head>
 	
 	<body>
-		<button id="sign-in-or-out-button" style="margin-left: 25px">Sign In/Authorize</button>
-		<button id="revoke-access-button" style="display: none; margin-left: 25px">Revoke access</button>
-		<div id="auth-status" style="display: inline; padding-left: 25px"></div><hr>
+		<div id="yt-authorize">
+			<button id="sign-in-or-out-button" style="margin-left: 25px">Sign In/Authorize</button>
+			<div id="auth-status" style="display: inline; padding-left: 25px"></div><hr>
+		</div>
 		<div id="fb-root"></div>
 		<div class="container">
 			<a id="logo-link" href="https://sites.google.com/site/ytnintendoswitch/" target="_top" style="top: 30px; margin-left: 285px; position: relative;">
