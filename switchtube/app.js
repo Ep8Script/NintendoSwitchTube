@@ -236,21 +236,14 @@ function makeRequest() {
 	})  
 }
 
-var GoogleAuth;
-function initClient() {
-  gapi.client.init({
-      'apiKey': key,
-      'clientId': "326112653788-6oa7ejsc9dgproj8slirnlj9rm9aoapa.apps.googleusercontent.com",
-      'scope': 'https://www.googleapis.com/auth/youtube'
-  }).then(function () {
-      GoogleAuth = gapi.auth2.getAuthInstance();
-
-      // Listen for sign-in state changes.
-      GoogleAuth.isSignedIn.listen(updateSigninStatus);
-  });
-}
-function startLogin() {
-	GoogleAuth.signIn();
+function myChannel() {
+	$.ajax({
+		  url: "https://content.googleapis.com/youtube/v3/channels?part=snippet&mine=true&access_token="+clientToken, 
+		  dataType: "json",
+		  success: function(data) {
+			  getChannel(data.items[0].id);
+		  },
+	  });
 }
 
 function sendFeedback() {

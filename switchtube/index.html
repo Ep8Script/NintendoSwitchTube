@@ -7,9 +7,6 @@
 		<script src="jquery.min.js"></script>
 		<script src="gamepad.js"></script>
 		<script src="https://apis.google.com/js/client.js?onload=googleApiClientReady"></script>
-		<script src="app.js"></script>
-		<link href="img/fav.ico" rel="shortcut icon" type="image/x-icon">
-		<link href="style.css" rel="stylesheet">
 		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-112999876-1"></script>
 		<script>
 			  var GoogleAuth;
@@ -59,7 +56,7 @@
 			    var isAuthorized = user.hasGrantedScopes(SCOPE);
 			    if (isAuthorized) {
 			      $('#sign-in-or-out-button').html('Sign out');
-			      $('#auth-status').html("You are currently signed in as "+user.w3.ig+".");
+			      $('#auth-status').html("You are currently signed in as "+user.w3.ig+". (<a href='#' onclick='myChannel()'>My Channel</a>)");
 			      clientToken = user.Zi.access_token;
 				  $('<img class="user_image" src="'+user.w3.Paa+'">').prependTo("#yt-authorize");
 			    } else {
@@ -72,6 +69,9 @@
 			    setSigninStatus();
 			  }
 		</script>
+		<script src="app.js"></script>
+		<link href="img/fav.ico" rel="shortcut icon" type="image/x-icon">
+		<link href="style.css" rel="stylesheet">
 	</head>
 	
 	<body>
