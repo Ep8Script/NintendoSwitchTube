@@ -504,3 +504,11 @@ button, input, label, select, textarea {
 	height: 30px;
 	margin-left: 10px;
 }
+.channel-thumb {
+	height: 150px;
+	margin-top: 10px;
+}
+.sub-label {
+	position: relative;
+	top: 5px;
+}
