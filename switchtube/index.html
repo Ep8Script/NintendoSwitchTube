@@ -45,6 +45,7 @@
 			    if (GoogleAuth.isSignedIn.get()) {
 			      // User is authorized and has clicked 'Sign out' button.
 			      GoogleAuth.signOut();
+				  $(".user_image").remove();
 			    } else {
 			      // User is not signed in. Start Google auth flow.
 			      GoogleAuth.signIn();
@@ -60,10 +61,10 @@
 			      $('#sign-in-or-out-button').html('Log out');
 			      $('#auth-status').html("You are currently logged in as "+user.w3.ig+".");
 			      clientToken = user.Zi.access_token;
-				  $('<img style="height: 30px; margin-left: 10px" src="'+user.w3.Paa+'">').prependTo("#yt-authorize");
+				  $('<img class="user_image" src="'+user.w3.Paa+'">').prependTo("#yt-authorize");
 			    } else {
-			      $('#sign-in-or-out-button').html('Log in');
-			      $('#auth-status').html("Log in to authorize your account with SwitchTube.");
+			      $('#sign-in-or-out-button').html('Sign in');
+			      $('#auth-status').html("Sign in to authorize your YouTube account with SwitchTube.");
 			    }
 			  }
 

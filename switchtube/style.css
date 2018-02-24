@@ -500,3 +500,7 @@ button, input, label, select, textarea {
 .channel-video-thumb {
 	height: 100px;
 }
+.user_image {
+	height: 30px;
+	margin-left: 10px;
+}
