@@ -11,9 +11,77 @@
 		<link href="img/fav.ico" rel="shortcut icon" type="image/x-icon">
 		<link href="style.css" rel="stylesheet">
 		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-112999876-1"></script>
+		<script>
+			  var GoogleAuth;
+			  var clientToken;
+			  var SCOPE = 'https://www.googleapis.com/auth/youtube';
+			  function handleClientLoad() {
+			    gapi.load('client:auth2', initClient);
+			  }
+
+			  function initClient() {
+			    gapi.client.init({
+			        'apiKey': key,
+			        'clientId': '326112653788-6oa7ejsc9dgproj8slirnlj9rm9aoapa.apps.googleusercontent.com',
+			        'scope': SCOPE
+			    }).then(function () {
+			      GoogleAuth = gapi.auth2.getAuthInstance();
+
+			      GoogleAuth.isSignedIn.listen(updateSigninStatus);
+
+			      // Handle initial sign-in state. (Determine if user is already signed in.)
+			      var user = GoogleAuth.currentUser.get();
+			      setSigninStatus();
+
+			      // Call handleAuthClick function when user clicks on
+			      //      "Sign In/Authorize" button.
+			      $('#sign-in-or-out-button').click(function() {
+			        handleAuthClick();
+			      }); 
+			    });
+			  }
+
+			  function handleAuthClick() {
+			    if (GoogleAuth.isSignedIn.get()) {
+			      // User is authorized and has clicked 'Sign out' button.
+			      GoogleAuth.signOut();
+				  $(".user_image").remove();
+				  $("table.subs").remove();
+				  $("#subscriptions").hide();
+			    } else {
+			      // User is not signed in. Start Google auth flow.
+			      GoogleAuth.signIn();
+			    }
+			  }
+
+			  function setSigninStatus(isSignedIn) {
+			    var user = GoogleAuth.currentUser.get();
+				
+				
+			    var isAuthorized = user.hasGrantedScopes(SCOPE);
+			    if (isAuthorized) {
+			      $('#sign-in-or-out-button').html('Sign out');
+			      $('#auth-status').html("You are currently signed in as "+user.w3.ig+". (<a href='#' onclick='myChannel()'>view channel</a>)");
+			      clientToken = user.Zi.access_token;
+				  $('<img class="user_image" src="'+user.w3.Paa+'">').prependTo("#yt-authorize");
+				  loadSubscriptions();
+			    } else {
+			      $('#sign-in-or-out-button').html('Sign in');
+			      $('#auth-status').html("Sign in to authorize your YouTube account with SwitchTube. (You may have to press the button again after signing in.)");
+			    }
+			  }
+
+			  function updateSigninStatus(isSignedIn) {
+			    setSigninStatus();
+			  }
+		</script>
 	</head>
 	
 	<body>
+		<div class="remove" id="yt-authorize">
+			<button id="sign-in-or-out-button" style="margin-left: 25px">Sign in</button>
+			<div id="auth-status" style="display: inline; padding-left: 25px">Sign in to authorize your YouTube account with SwitchTube. (You may have to press the button again after signing in.)</div><hr>
+		</div>
 		<div id="fb-root"></div>
 		<div class="container">
 			<a id="logo-link" href="https://sites.google.com/site/ytnintendoswitch/" target="_top" style="top: 30px; margin-left: 285px; position: relative;">
@@ -54,6 +122,9 @@
 					<ul id="results"></ul>
 				</div>
 			</div>
+			<div class="jumbotron remove" id="subscriptions" style="display: none;">
+				<h2>Subscriptions</h2>
+			</div>
 		</div>
 		<div style="text-align: center;">
 			Created by Ep8Script<br>
@@ -72,5 +143,7 @@
 				</form>
 			</div>
 		</div>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<script async defer src="https://apis.google.com/js/api.js" onload="this.onload=function(){};handleClientLoad()" onreadystatechange="if (this.readyState === 'complete') this.onload()"></script>
 	</body>
 </html>
