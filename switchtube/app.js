@@ -256,11 +256,11 @@ function loadSubscriptions(e) {
 			  subs = 0;
 			  $('<br><table class="subscriptions" cellpadding="3"><tbody class="subscriptions"><tr>').appendTo("#subscriptions");
 			  $.each(data.items, function(index, items) {
-				  $("<td><div class='sub-channel'><a onclick='getChannel(\""+items.snippet.resourceId.channelId+"\")'><img class='channel-thumb' src='"+items.snippet.thumbnails.medium.url+"'></a><br><a href='#' onclick='getVideo(\""+items.snippet.resourceId.channelId+"\")'>"+items.snippet.title+"</a></div></td>").appendTo("tbody.uploads tr:last-child"); 
-				  vids++;
-				  if(vids == 4) {
-					  vids = 0;
-					  $("<tr></tr>").insertAfter("tbody.uploads tr:last-child");
+				  $("<td><div class='sub-channel'><a onclick='getChannel(\""+items.snippet.resourceId.channelId+"\")'><img class='channel-thumb' src='"+items.snippet.thumbnails.medium.url+"'></a><br><a href='#' onclick='getVideo(\""+items.snippet.resourceId.channelId+"\")'>"+items.snippet.title+"</a></div></td>").appendTo("tbody.subscriptions tr:last-child"); 
+				  subs++;
+				  if(subs == 4) {
+					  subs = 0;
+					  $("<tr></tr>").insertAfter("tbody.subscriptions tr:last-child");
 				  }
 			  });
 		  },
