@@ -59,7 +59,7 @@
 			    var isAuthorized = user.hasGrantedScopes(SCOPE);
 			    if (isAuthorized) {
 			      $('#sign-in-or-out-button').html('Sign out');
-			      $('#auth-status').html("You are currently signed in as "+user.w3.ig+". (<a href='#' onclick='myChannel()'>My Channel</a>)");
+			      $('#auth-status').html("You are currently signed in as "+user.w3.ig+". (<a href='#' onclick='myChannel()'>view channel</a>)");
 			      clientToken = user.Zi.access_token;
 				  $('<img class="user_image" src="'+user.w3.Paa+'">').prependTo("#yt-authorize");
 			    } else {
