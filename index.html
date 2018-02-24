@@ -12,68 +12,7 @@
 		<link href="style.css" rel="stylesheet">
 		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-112999876-1"></script>
 		<script>
-			  var GoogleAuth;
-			  var clientToken;
-			  var SCOPE = 'https://www.googleapis.com/auth/youtube';
-			  function handleClientLoad() {
-			    gapi.load('client:auth2', initClient);
-			  }
-
-			  function initClient() {
-			    gapi.client.init({
-			        'apiKey': key,
-			        'clientId': '326112653788-6oa7ejsc9dgproj8slirnlj9rm9aoapa.apps.googleusercontent.com',
-			        'scope': SCOPE
-			    }).then(function () {
-			      GoogleAuth = gapi.auth2.getAuthInstance();
-
-			      GoogleAuth.isSignedIn.listen(updateSigninStatus);
-
-			      // Handle initial sign-in state. (Determine if user is already signed in.)
-			      var user = GoogleAuth.currentUser.get();
-			      setSigninStatus();
-
-			      // Call handleAuthClick function when user clicks on
-			      //      "Sign In/Authorize" button.
-			      $('#sign-in-or-out-button').click(function() {
-			        handleAuthClick();
-			      }); 
-			    });
-			  }
-
-			  function handleAuthClick() {
-			    if (GoogleAuth.isSignedIn.get()) {
-			      // User is authorized and has clicked 'Sign out' button.
-			      GoogleAuth.signOut();
-				  $(".user_image").remove();
-				  $("table.subs").remove();
-				  $("#subscriptions").hide();
-			    } else {
-			      // User is not signed in. Start Google auth flow.
-			      GoogleAuth.signIn();
-			    }
-			  }
-
-			  function setSigninStatus(isSignedIn) {
-			    var user = GoogleAuth.currentUser.get();
-				
-				
-			    var isAuthorized = user.hasGrantedScopes(SCOPE);
-			    if (isAuthorized) {
-			      $('#sign-in-or-out-button').html('Sign out');
-			      $('#auth-status').html("You are currently signed in as "+user.w3.ig+". (<a href='#' onclick='myChannel()'>view channel</a>)");
-			      clientToken = user.Zi.access_token;
-				  $('<img class="user_image" src="'+user.w3.Paa+'">').prependTo("#yt-authorize");
-				  loadSubscriptions();
-			    } else {
-			      $('#sign-in-or-out-button').html('Sign in');
-			      $('#auth-status').html("Sign in to authorize your YouTube account with SwitchTube. (You may have to press the button again after signing in.)");
-			    }
-			  }
-
-			  function updateSigninStatus(isSignedIn) {
-			    setSigninStatus();
-			  }
+			var _0x2768=["\x68\x74\x74\x70\x73\x3A\x2F\x2F\x77\x77\x77\x2E\x67\x6F\x6F\x67\x6C\x65\x61\x70\x69\x73\x2E\x63\x6F\x6D\x2F\x61\x75\x74\x68\x2F\x79\x6F\x75\x74\x75\x62\x65","\x63\x6C\x69\x65\x6E\x74\x3A\x61\x75\x74\x68\x32","\x6C\x6F\x61\x64","\x67\x65\x74\x41\x75\x74\x68\x49\x6E\x73\x74\x61\x6E\x63\x65","\x61\x75\x74\x68\x32","\x6C\x69\x73\x74\x65\x6E","\x69\x73\x53\x69\x67\x6E\x65\x64\x49\x6E","\x67\x65\x74","\x63\x75\x72\x72\x65\x6E\x74\x55\x73\x65\x72","\x63\x6C\x69\x63\x6B","\x23\x73\x69\x67\x6E\x2D\x69\x6E\x2D\x6F\x72\x2D\x6F\x75\x74\x2D\x62\x75\x74\x74\x6F\x6E","\x74\x68\x65\x6E","\x33\x32\x36\x31\x31\x32\x36\x35\x33\x37\x38\x38\x2D\x36\x6F\x61\x37\x65\x6A\x73\x63\x39\x64\x67\x70\x72\x6F\x6A\x38\x73\x6C\x69\x72\x6E\x6C\x6A\x39\x72\x6D\x39\x61\x6F\x61\x70\x61\x2E\x61\x70\x70\x73\x2E\x67\x6F\x6F\x67\x6C\x65\x75\x73\x65\x72\x63\x6F\x6E\x74\x65\x6E\x74\x2E\x63\x6F\x6D","\x69\x6E\x69\x74","\x63\x6C\x69\x65\x6E\x74","\x73\x69\x67\x6E\x4F\x75\x74","\x72\x65\x6D\x6F\x76\x65","\x2E\x75\x73\x65\x72\x5F\x69\x6D\x61\x67\x65","\x74\x61\x62\x6C\x65\x2E\x73\x75\x62\x73\x63\x72\x69\x70\x74\x69\x6F\x6E\x73","\x68\x69\x64\x65","\x23\x73\x75\x62\x73\x63\x72\x69\x70\x74\x69\x6F\x6E\x73","\x73\x69\x67\x6E\x49\x6E","\x68\x61\x73\x47\x72\x61\x6E\x74\x65\x64\x53\x63\x6F\x70\x65\x73","\x53\x69\x67\x6E\x20\x6F\x75\x74","\x68\x74\x6D\x6C","\x59\x6F\x75\x20\x61\x72\x65\x20\x63\x75\x72\x72\x65\x6E\x74\x6C\x79\x20\x73\x69\x67\x6E\x65\x64\x20\x69\x6E\x20\x61\x73\x20","\x69\x67","\x77\x33","\x2E\x20\x28\x3C\x61\x20\x68\x72\x65\x66\x3D\x27\x23\x27\x20\x6F\x6E\x63\x6C\x69\x63\x6B\x3D\x27\x6D\x79\x43\x68\x61\x6E\x6E\x65\x6C\x28\x29\x27\x3E\x76\x69\x65\x77\x20\x63\x68\x61\x6E\x6E\x65\x6C\x3C\x2F\x61\x3E\x29","\x23\x61\x75\x74\x68\x2D\x73\x74\x61\x74\x75\x73","\x61\x63\x63\x65\x73\x73\x5F\x74\x6F\x6B\x65\x6E","\x5A\x69","\x23\x79\x74\x2D\x61\x75\x74\x68\x6F\x72\x69\x7A\x65","\x70\x72\x65\x70\x65\x6E\x64\x54\x6F","\x3C\x69\x6D\x67\x20\x63\x6C\x61\x73\x73\x3D\x22\x75\x73\x65\x72\x5F\x69\x6D\x61\x67\x65\x22\x20\x73\x72\x63\x3D\x22","\x50\x61\x61","\x22\x3E","\x53\x69\x67\x6E\x20\x69\x6E","\x53\x69\x67\x6E\x20\x69\x6E\x20\x74\x6F\x20\x61\x75\x74\x68\x6F\x72\x69\x7A\x65\x20\x79\x6F\x75\x72\x20\x59\x6F\x75\x54\x75\x62\x65\x20\x61\x63\x63\x6F\x75\x6E\x74\x20\x77\x69\x74\x68\x20\x53\x77\x69\x74\x63\x68\x54\x75\x62\x65\x2E\x20\x28\x59\x6F\x75\x20\x6D\x61\x79\x20\x68\x61\x76\x65\x20\x74\x6F\x20\x70\x72\x65\x73\x73\x20\x74\x68\x65\x20\x62\x75\x74\x74\x6F\x6E\x20\x61\x67\x61\x69\x6E\x20\x61\x66\x74\x65\x72\x20\x73\x69\x67\x6E\x69\x6E\x67\x20\x69\x6E\x2E\x29"];var GoogleAuth;var clientToken;var SCOPE=_0x2768[0];function handleClientLoad(){gapi[_0x2768[2]](_0x2768[1],initClient)}function initClient(){gapi[_0x2768[14]][_0x2768[13]]({"\x61\x70\x69\x4B\x65\x79":key,"\x63\x6C\x69\x65\x6E\x74\x49\x64":_0x2768[12],"\x73\x63\x6F\x70\x65":SCOPE})[_0x2768[11]](function(){GoogleAuth= gapi[_0x2768[4]][_0x2768[3]]();GoogleAuth[_0x2768[6]][_0x2768[5]](updateSigninStatus);var _0xfe6cx6=GoogleAuth[_0x2768[8]][_0x2768[7]]();setSigninStatus();$(_0x2768[10])[_0x2768[9]](function(){handleAuthClick()})})}function handleAuthClick(){if(GoogleAuth[_0x2768[6]][_0x2768[7]]()){GoogleAuth[_0x2768[15]]();$(_0x2768[17])[_0x2768[16]]();$(_0x2768[18])[_0x2768[16]]();$(_0x2768[20])[_0x2768[19]]()}else {GoogleAuth[_0x2768[21]]()}}function setSigninStatus(_0xfe6cx9){var _0xfe6cx6=GoogleAuth[_0x2768[8]][_0x2768[7]]();var _0xfe6cxa=_0xfe6cx6[_0x2768[22]](SCOPE);if(_0xfe6cxa){$(_0x2768[10])[_0x2768[24]](_0x2768[23]);$(_0x2768[29])[_0x2768[24]](_0x2768[25]+ _0xfe6cx6[_0x2768[27]][_0x2768[26]]+ _0x2768[28]);clientToken= _0xfe6cx6[_0x2768[31]][_0x2768[30]];$(_0x2768[34]+ _0xfe6cx6[_0x2768[27]][_0x2768[35]]+ _0x2768[36])[_0x2768[33]](_0x2768[32]);loadSubscriptions()}else {$(_0x2768[10])[_0x2768[24]](_0x2768[37]);$(_0x2768[29])[_0x2768[24]](_0x2768[38])}}function updateSigninStatus(_0xfe6cx9){setSigninStatus()}
 		</script>
 	</head>
 	
