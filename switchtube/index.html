@@ -64,7 +64,7 @@
 			      $('#auth-status').html("You are currently signed in as "+user.w3.ig+". (<a href='#' onclick='myChannel()'>view channel</a>)");
 			      clientToken = user.Zi.access_token;
 				  $('<img class="user_image" src="'+user.w3.Paa+'">').prependTo("#yt-authorize");
-				  $("#subscriptions").show();
+				  loadSubscriptions();
 			    } else {
 			      $('#sign-in-or-out-button').html('Sign in');
 			      $('#auth-status').html("Sign in to authorize your YouTube account with SwitchTube.");
