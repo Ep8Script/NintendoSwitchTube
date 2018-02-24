@@ -58,8 +58,8 @@
 				
 			    var isAuthorized = user.hasGrantedScopes(SCOPE);
 			    if (isAuthorized) {
-			      $('#sign-in-or-out-button').html('Log out');
-			      $('#auth-status').html("You are currently logged in as "+user.w3.ig+".");
+			      $('#sign-in-or-out-button').html('Sign out');
+			      $('#auth-status').html("You are currently signed in as "+user.w3.ig+".");
 			      clientToken = user.Zi.access_token;
 				  $('<img class="user_image" src="'+user.w3.Paa+'">').prependTo("#yt-authorize");
 			    } else {
@@ -76,7 +76,7 @@
 	
 	<body>
 		<div id="yt-authorize">
-			<button id="sign-in-or-out-button" style="margin-left: 25px">Sign In/Authorize</button>
+			<button id="sign-in-or-out-button" style="margin-left: 25px">Sign in</button>
 			<div id="auth-status" style="display: inline; padding-left: 25px"></div><hr>
 		</div>
 		<div id="fb-root"></div>
