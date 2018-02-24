@@ -46,6 +46,8 @@
 			      // User is authorized and has clicked 'Sign out' button.
 			      GoogleAuth.signOut();
 				  $(".user_image").remove();
+				  $("table.subs").remove();
+				  $("#subscriptions").hide();
 			    } else {
 			      // User is not signed in. Start Google auth flow.
 			      GoogleAuth.signIn();
@@ -62,6 +64,7 @@
 			      $('#auth-status').html("You are currently signed in as "+user.w3.ig+". (<a href='#' onclick='myChannel()'>view channel</a>)");
 			      clientToken = user.Zi.access_token;
 				  $('<img class="user_image" src="'+user.w3.Paa+'">').prependTo("#yt-authorize");
+				  $("#subscriptions").show();
 			    } else {
 			      $('#sign-in-or-out-button').html('Sign in');
 			      $('#auth-status').html("Sign in to authorize your YouTube account with SwitchTube.");
@@ -77,7 +80,7 @@
 	<body>
 		<div class="remove" id="yt-authorize">
 			<button id="sign-in-or-out-button" style="margin-left: 25px">Sign in</button>
-			<div id="auth-status" style="display: inline; padding-left: 25px"></div><hr>
+			<div id="auth-status" style="display: inline; padding-left: 25px">Sign in to authorize your YouTube account with SwitchTube.</div><hr>
 		</div>
 		<div id="fb-root"></div>
 		<div class="container">
@@ -118,6 +121,9 @@
 					<h3 id="search-results"></h3>
 					<ul id="results"></ul>
 				</div>
+			</div>
+			<div class="jumbotron remove" id="subscriptions" style="display: none;">
+				<h2>Subscriptions</h2>
 			</div>
 		</div>
 		<div style="text-align: center;">

@@ -2,6 +2,7 @@ var a = false;
 var searchType;
 var uploadPlaylist;
 var vids;
+var subs;
 var nextPage;
 var loading = false;
 window.dataLayer = window.dataLayer || [];
@@ -243,6 +244,28 @@ function myChannel() {
 		  success: function(data) {
 			  getChannel(data.items[0].id);
 		  },
+	  });
+}
+
+function loadSubscriptions(e) {
+	$.ajax({
+		  url: "https://www.googleapis.com/youtube/v3/subscriptions?mine=true&access_token="+accessToken+"&part=snippet&maxResults=20", 
+		  dataType: "json",
+		  success: function(data) {
+			  subs = 0;
+			  $('<br><table class="subscriptions" cellpadding="3"><tbody class="subscriptions"><tr>').appendTo("#subscriptions");
+			  $.each(data.items, function(index, items) {
+				  $("<td><div class='sub-channel'><a onclick='getChannel(\""+items.snippet.resourceId.channelId+"\")'><img class='channel-thumb' src='"+items.snippet.thumbnails.medium.url+"'></a><br><a href='#' onclick='getVideo(\""+items.snippet.resourceId.channelId+"\")'>"+items.snippet.title+"</a></div></td>").appendTo("tbody.uploads tr:last-child"); 
+				  vids++;
+				  if(vids == 4) {
+					  vids = 0;
+					  $("<tr></tr>").insertAfter("tbody.uploads tr:last-child");
+				  }
+			  });
+		  },
+		  error: function() {
+			  alert("Could not load subscriptions");
+		  }
 	  });
 }
 
