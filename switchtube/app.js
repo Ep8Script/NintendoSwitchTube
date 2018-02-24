@@ -130,6 +130,9 @@ function showChannel(e) {
 		$(".switch").remove();
 	}
 	$("#custom").show();
+	$('body,html').animate({
+		scrollTop: $("#custom").offset().top
+	}, 200);
 	$("<div class='switch'></div>").appendTo("#ytvideo");
 	$.ajax({
 		  url: "https://www.googleapis.com/youtube/v3/playlistItems?playlistId="+uploadPlaylist+"&key="+key+"&part=snippet&maxResults=30", 
@@ -215,7 +218,7 @@ function makeRequest() {
 	request.execute(function(response)  {                                                                                    
 			$('#results').empty()
 			$("#search-results").html("Search Results");
-			var srchItems = response.result.items;                      
+			var srchItems = response.items;                      
 			$.each(srchItems, function(index, item) {
 				if(searchType == "video") {
 					vidTitle = "<h4>"+item.snippet.title+"</h4>";  
@@ -254,7 +257,7 @@ function loadSubscriptions(e) {
 		  dataType: "json",
 		  success: function(data) {
 			  subs = 0;
-			  $('<br><table class="subscriptions" cellpadding="3"><tbody class="subscriptions"><tr>').appendTo("#subscriptions");
+			  $('<table class="subscriptions" cellpadding="3"><tbody class="subscriptions"><tr>').appendTo("#subscriptions");
 			  $.each(data.items, function(index, items) {
 				  $("<td><div class='sub-channel'><a onclick='getChannel(\""+items.snippet.resourceId.channelId+"\")'><img class='channel-thumb' src='"+items.snippet.thumbnails.medium.url+"'></a><br><a class='sub-label' href='#' onclick='getChannel(\""+items.snippet.resourceId.channelId+"\")'>"+items.snippet.title+"</a></div></td>").appendTo("tbody.subscriptions tr:last-child");
 				  subs++;

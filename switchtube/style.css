@@ -1,37 +1,37 @@
 /* There's a lot of duplicates here, but I aimed to make this a little easier to read */
 .input-append :last-child.add-on, .input-append :last-child.btn-group > .dropdown-toggle, .input-append :last-child.btn {
-    -webkit-border-radius: 0 4px 4px 0;
-    -moz-border-radius: 0 4px 4px 0;
-    border-radius: 0 4px 4px 0;
+	-webkit-border-radius: 0 4px 4px 0;
+	-moz-border-radius: 0 4px 4px 0;
+	border-radius: 0 4px 4px 0;
 }
 
 a:focus {
-    outline: #333 dotted thin;
-    outline: -webkit-focus-ring-color auto 5px;
-    outline-offset: -2px;
+	outline: #333 dotted thin;
+	outline: -webkit-focus-ring-color auto 5px;
+	outline-offset: -2px;
 }
 
 a:active, a:hover {
-    outline: 0;
+	outline: 0;
 }
 
 .container {
-    width: 940px;
-    margin: 0 auto;
-    max-width: 1000px;
+	width: 940px;
+	margin: 0 auto;
+	max-width: 1000px;
 }
 
 img {
-    width: auto\9;
-    height: auto;
-    max-width: 100%;
-    vertical-align: middle;
-    border: 0;
-    -ms-interpolation-mode: bicubic;
+	width: auto\9;
+	height: auto;
+	max-width: 100%;
+	vertical-align: middle;
+	border: 0;
+	-ms-interpolation-mode: bicubic;
 }
 
 button, input[type=button], input[type=reset], input[type=submit], input[type=radio], input[type=checkbox] {
-    cursor: pointer;
+	cursor: pointer;
 }
 
 body { /*KEEP */
@@ -46,118 +46,118 @@ body { /*KEEP */
 }
 
 a {
-    color: #08c;
-    text-decoration: none;
+	color: #08c;
+	text-decoration: none;
 }
 
 a:focus, a:hover {
-    color: #005580;
-    text-decoration: underline;
+	color: #005580;
+	text-decoration: underline;
 }
 
 .row-fluid [class*=span] {
-    display: block;
-    float: left;
-    width: 100%;
-    min-height: 30px;
-    margin-left: 2.127659574468085%;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box
+	display: block;
+	float: left;
+	width: 100%;
+	min-height: 30px;
+	margin-left: 2.127659574468085%;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box
 }
 
 .row-fluid [class*=span]:first-child {	
-    margin-left: 0;
+	margin-left: 0;
 }
 
 p {
-    margin: 0 0 10px
+	margin: 0 0 10px
 }
 
 h1, h2, h3, h4, h5, h6 {
-    margin: 10px 0;
-    font-family: inherit;
-    font-weight: 700;
-    line-height: 20px;
-    color: inherit;
-    text-rendering: optimizelegibility;
+	margin: 10px 0;
+	font-family: inherit;
+	font-weight: 700;
+	line-height: 20px;
+	color: inherit;
+	text-rendering: optimizelegibility;
 }
 
 h1, h2, h3 {
-    line-height: 40px;
+	line-height: 40px;
 }
 
 h1 {
-    font-size: 38.5px
+	font-size: 38.5px
 }
 
 h2 {
-    font-size: 31.5px;
+	font-size: 31.5px;
 }
 
 h3 {
-    font-size: 24.5px;
+	font-size: 24.5px;
 }
 
 h2 small,
 h4 {
-    font-size: 17.5px
+	font-size: 17.5px
 }
 
 ol, ul {
-    padding: 0;
-    margin: 0 0 10px 25px
+	padding: 0;
+	margin: 0 0 10px 25px
 }
 
 label {
-    display: block;
-    margin-bottom: 5px;
+	display: block;
+	margin-bottom: 5px;
 }
 
 textarea {
-    height: auto
+	height: auto
 }
 
 .input-append, .input-prepend {
-    display: inline-block;
-    margin-bottom: 10px;
-    font-size: 0;
-    white-space: nowrap;
-    vertical-align: middle;
+	display: inline-block;
+	margin-bottom: 10px;
+	font-size: 0;
+	white-space: nowrap;
+	vertical-align: middle;
 }
 
 .btn-success {
-    color: #fff;
-    background-color: #5bb75b;
-    background-image: -moz-linear-gradient(top, #62c462, #51a351);
-    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#62c462), to(#51a351));
-    background-image: -webkit-linear-gradient(top, #62c462, #51a351);
-    background-image: -o-linear-gradient(top, #62c462, #51a351);
-    background-image: linear-gradient(to bottom, #62c462, #51a351);
-    border-color: #51a351 #51a351 #387038;
-    border-color: rgba(0, 0, 0, .1) rgba(0, 0, 0, .1) rgba(0, 0, 0, .25);
-    filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#ff62c462', endColorstr='#ff51a351', GradientType=0);
-    filter: progid: DXImageTransform.Microsoft.gradient(enabled=false)
+	color: #fff;
+	background-color: #5bb75b;
+	background-image: -moz-linear-gradient(top, #62c462, #51a351);
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#62c462), to(#51a351));
+	background-image: -webkit-linear-gradient(top, #62c462, #51a351);
+	background-image: -o-linear-gradient(top, #62c462, #51a351);
+	background-image: linear-gradient(to bottom, #62c462, #51a351);
+	border-color: #51a351 #51a351 #387038;
+	border-color: rgba(0, 0, 0, .1) rgba(0, 0, 0, .1) rgba(0, 0, 0, .25);
+	filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#ff62c462', endColorstr='#ff51a351', GradientType=0);
+	filter: progid: DXImageTransform.Microsoft.gradient(enabled=false)
 }
 
 a {
-    cursor: pointer;
+	cursor: pointer;
 }
 
 .jumbotron {
-    margin: 80px 0;
-    text-align: center;
+	margin: 80px 0;
+	text-align: center;
 }
 
 .jumbotron .btn {
-    font-size: 21px;
-    padding: 14px 24px;
+	font-size: 21px;
+	padding: 14px 24px;
 	margin-left: -1px;
 }
 
 .jumbotron input {
-    font-size: 21px;
-    padding: 14px 24px
+	font-size: 21px;
+	padding: 14px 24px
 }
 
 .switch {
@@ -495,7 +495,7 @@ button, input, label, select, textarea {
 	margin-top: 10px;
 }
 .channel-title {
-    font-size: 20px;
+	font-size: 20px;
 }
 .channel-video-thumb {
 	height: 100px;
@@ -511,4 +511,11 @@ button, input, label, select, textarea {
 .sub-label {
 	position: relative;
 	top: 5px;
+}
+table.subscriptions  {
+	position: relative;
+	left: 155px;
+	border: 5px solid #535252;
+	border-radius: 10px;
+	border-spacing: 10px;
 }
