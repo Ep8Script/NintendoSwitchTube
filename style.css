@@ -519,3 +519,10 @@ table.subscriptions  {
 	border-radius: 10px;
 	border-spacing: 10px;
 }
+.channel-video-title {
+	max-width: 205px;
+	white-space: nowrap;
+	display: inline-block;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
