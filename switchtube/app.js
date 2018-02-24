@@ -194,6 +194,7 @@ function showMore() {
 function keyWordsearch(){
 	searchType = $("#search-type").val();
 	gapi.client.setApiKey(key);
+	gapi.client.setToken(clientToken);
 	gapi.client.load('youtube', 'v3', function() {
 		makeRequest();
 	});
@@ -218,7 +219,9 @@ function makeRequest() {
 	request.execute(function(response)  {                                                                                    
 			$('#results').empty()
 			$("#search-results").html("Search Results");
-			var srchItems = response.items;                      
+			var srchItems = response.result.items;
+			console.log(srchItems);
+			console.log(response.items);
 			$.each(srchItems, function(index, item) {
 				if(searchType == "video") {
 					vidTitle = "<h4>"+item.snippet.title+"</h4>";  
