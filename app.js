@@ -85,11 +85,17 @@ $(document).ready(function() {
 		alert("Sorry, SwitchTube will not work in this browser applet. Please open the web browser through Facebook in your Social Media Settings and navigate to this website from there.");
 	}
 	$.ajax({
+		  type: "GET",
 		  url: "https://script.google.com/macros/s/AKfycbz-XHPvv442CXLNXfiGdc3S2wb0UZD-9bTrorF9caO7GgKGNTbn/exec?responses=true", 
 		  dataType: "json",
 		  success: function(data) {
 			  $('<p style="color: red;"><span>'+data.number+'</span> messages received</p>').insertAfter(".feedback-form h3");
 		  },
+	  });
+	  $.ajax({
+		  type: "POST",
+		  url: "https://script.google.com/macros/s/AKfycbz_RUzXYHSdMBRiAgfZknTHnwGUcAq008GPDUeSTVIRxzXILxkD/exec", 
+		  dataType: "json"
 	  });
 });
 function getChannel(e) {
