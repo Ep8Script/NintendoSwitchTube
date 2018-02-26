@@ -393,7 +393,8 @@ function makeRequest() {
 					vidThumburl = item.snippet.thumbnails.high.url;
 					id = item.id.videoId;
 					vidThumbimg = '<img id="thumb" src="'+vidThumburl+'" alt="No image available.">';
-					$('#results').append("<a onclick=\'getVideo(\""+id+"\")'>" + vidTitle + "</a><h4>Uploaded by <a href='#' onclick=\"getChannel('"+item.snippet.channelId+"')\">"+item.snippet.channelTitle+"</a></h4><br><a href='#' onclick=\'getVideo(\""+id+"\")'>" + vidThumbimg + "</a><hr>").click(function() {
+					$('#results').append("<a onclick=\'getVideo(\""+id+"\")'>" + vidTitle + "</a><h4>Uploaded by <a href='#' onclick=\"getChannel('"+item.snippet.channelId+"')\">"+item.snippet.channelTitle+"</a></h4><br><a href='#' onclick=\'getVideo(\""+id+"\")'>" + vidThumbimg + "</a><hr>");
+					$("#results a").click(function() {
 						isPlaylist = false;
 					});
 				}
