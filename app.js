@@ -6,7 +6,9 @@ var subs;
 var nextPage;
 var sending = false;
 var loading = false;
+var isPlaylist = false;
 var month = new Array();
+var index = 0;
 month[0] = "Jan";
 month[1] = "Feb";
 month[2] = "Mar";
@@ -37,7 +39,7 @@ function getVideo(e) {
 	}
 	vidURL = o[0];
 	$.ajax({
-		  url: "https://www.googleapis.com/youtube/v3/videos?id="+vidURL+"&key="+key+"&fields=items(snippet)&part=snippet", 
+		  url: "https://www.googleapis.com/youtube/v3/videos?id="+vidURL+"&key="+key+"&part=snippet%2Cstatistics", 
 		  dataType: "json",
 		  success: function(data){
 				   document.title = data.items[0].snippet.title+" - Nintendo SwitchTube";
@@ -52,14 +54,19 @@ function getVideo(e) {
 					$("#results").empty();
 					$("#query").val("");
 					$(".video-description").remove();
+					$(".span12 hr").remove();
 					channelIcon(data.items[0].snippet.channelId);
 					var timestamp = new Date(Date.parse(data.items[0].snippet.publishedAt));
 					var published = "Published on "+month[timestamp.getMonth()]+" "+timestamp.getDate()+", "+timestamp.getFullYear();
+					var views = parseInt(data.items[0].statistics.viewCount);
+					var viewcount = views.toLocaleString();
 					$("<p class='video-description'><b>"+published+"</b></p>").insertAfter("#ytvideo");
+					$("<p class='video-description views'>"+viewcount+" views</p>").insertAfter(".video-description");
+					$("<hr />").insertAfter(".views");
 					var description = data.items[0].snippet.description;
 					description = description.replace(/\n/g, "<br>");
 					description = description.replace(/((http|https|ftp):\/\/[\w?=&.\/-;#~%-]+(?![\w\s?&.\/;#~%"=-]*>))/g, '<a href="$1">$1</a>');
-					$("<p class='video-description'>"+description+"</p>").insertAfter(".video-description");
+					$("<p class='video-description'>"+description+"</p>").insertAfter(".span12 hr");
 		  },
 		  error: function() {
 			  alert("An error occurred");
@@ -68,14 +75,23 @@ function getVideo(e) {
 }
 
 function showVideo(e) {
-	if($(".switch").length) {
-		$(".switch").remove();
+	if(isPlaylist) {
+		$(".switch").attr("style", "right: 160px;");
+		$("#yt-frame").attr("src", "https://www.youtube.com/embed/"+e+"/")
 	}
-	$("#custom").show();
-	$("<div class='switch'></div>").appendTo("#ytvideo");
-	$('<img src="img/joycon_left.jpg">').appendTo(".switch");
-	$('<iframe width="640" height="360" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>').attr("src", "https://www.youtube.com/embed/"+e+"/").appendTo(".switch");
-	$('<img src="img/joycon_right.jpg">').appendTo(".switch");
+	else {
+		if($("#playlist-box").length) {
+			$("#playlist-box").remove();
+		}
+		if($(".switch").length) {
+			$(".switch").remove();
+		}
+		$("#custom").show();
+		$("<div class='switch'></div>").appendTo("#ytvideo");
+		$('<img src="img/joycon_left.jpg">').appendTo(".switch");
+		$('<iframe id="yt-frame" width="640" height="360" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>').attr("src", "https://www.youtube.com/embed/"+e+"/").appendTo(".switch");
+		$('<img src="img/joycon_right.jpg">').appendTo(".switch");
+	}
 }
 
 function channelIcon(e) {
@@ -90,7 +106,17 @@ function channelIcon(e) {
 
 function VID() {
 	$("#videourl").val();
-	getVideo($("#videourl").val());
+	var value = $("#id-type").val();
+	if(value == "video") {
+		isPlaylist = false;
+		getVideo($("#videourl").val());
+	}
+	else if(value == "channel") {
+		getChannel($("#videourl").val());
+	}
+	else if(value == "playlist") {
+		getPlaylist($("#videourl").val());
+	}
 	return false;
 }
 
@@ -113,10 +139,62 @@ $(document).ready(function() {
 		  url: "https://script.google.com/macros/s/AKfycbz_RUzXYHSdMBRiAgfZknTHnwGUcAq008GPDUeSTVIRxzXILxkD/exec", 
 		  dataType: "json"
 	  });
+	  $("a.trending").click(function() {
+		isPlaylist = false;
+		$.ajax({
+			  url: "https://www.googleapis.com/youtube/v3/videos?&chart=mostPopular&regionCode=US&part=snippet&maxResults=13&key="+key, 
+			  dataType: "json",
+			  success: function(data) {
+				  $("<div class='switch'><div class='trending'><h2>Trending <small>[<a href='#' id='hide-trending'>hide</a>]</small></h2></div></div>").prependTo("#ytvideo");
+				  $("#hide-trending").click(function() {
+					  $(".switch").remove();
+					  $("#custom").hide();
+					  return false;
+				  });
+				  $("#custom").show();
+				  $.each(data.items, function(index, item) {
+					vidTitle = "<h4>"+item.snippet.title+"</h4>";  
+					vidThumburl = item.snippet.thumbnails.high.url;
+					id = item.id;
+					vidThumbimg = '<img id="thumb" src="'+vidThumburl+'" style="height: 300px;" alt="No image available.">';
+					$('.switch .trending').append("<a onclick=\'getVideo(\""+id+"\")'>" + vidTitle + "</a><br><a href='#' onclick=\'getVideo(\""+id+"\")'>" + vidThumbimg + "</a><hr>");
+				  });				
+			  },
+			  error: function() {
+				  alert("Could not load trending videos");
+			  }
+		  });
+		  return false;
+	});
+	$(".give-feedback").click(function() {
+		$('.feedback-form').show();
+		return false;
+	});
+	$("#id-type").change(function() {
+		var value = this.value;
+		if(value == "video") {
+			$("#vidID .get-video").attr("placeholder", "Enter YouTube Video ID");
+			$(".example").text("Example: f5uik5fgIaI");
+		}
+		else if(value == "channel") {
+			$("#vidID .get-video").attr("placeholder", "Enter YouTube Channel ID");
+			$(".example").text("Example: UCDWIvJwLJsE4LG1Atne2blQ");
+		}
+		else if(value == "playlist") {
+			$("#vidID .get-video").attr("placeholder", "Enter YouTube Playlist ID");
+			$(".example").text("Example: PLZxWJ6CTr63bL1Vc2qB6zyG_Gad4hpB9K");
+		}
+	});
+	$("#vidID").submit(VID);
+	$("#search-yt").submit(keyWordsearch);
 });
 function getChannel(e) {
 	if(!loading) {
 		loading = true;
+		isPlaylist = false;
+		if($("#playlist-box").length) {
+			$("#playlist-box").remove();
+		}
 		$.ajax({
 		  url: "https://content.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id="+e+"&key="+key, 
 		  dataType: "json",
@@ -191,6 +269,51 @@ function showChannel(e) {
 	  });
 }
 
+function getPlaylist(e) {
+	$("#search-results").empty();
+	$("#results").empty();
+	$("#query").val("");
+	if(!isPlaylist) {
+		if($(".switch").length) {
+			$(".switch").remove();
+		}
+		$("<div class='switch'></div>").appendTo("#ytvideo");
+		$('<img src="img/joycon_left.jpg">').appendTo(".switch");
+		$('<iframe id="yt-frame" width="640" height="360" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>').appendTo(".switch");
+		$('<img src="img/joycon_right.jpg">').appendTo(".switch");
+	}
+	$("#custom").show();
+	$(".switch").attr("style", "right: 160px;");
+	$('body,html').animate({
+		scrollTop: $("#custom").offset().top
+	}, 200);
+	$.ajax({
+		  url: "https://www.googleapis.com/youtube/v3/playlistItems?playlistId="+e+"&key="+key+"&part=snippet&maxResults=50", 
+		  dataType: "json",
+		  success: function(data) {
+			  var vid = 0;
+			  nextPage = data.nextPageToken;
+			  isPlaylist = true;
+			  getVideo(data.items[0].snippet.resourceId.videoId);
+			  $('<div id="playlist-box"><table class="playlist" cellpadding="3"><tbody class="playlist">').appendTo(".switch");
+			  $.each(data.items, function(index, items) {
+				  $("<tr><td><div class='video'><a onclick='getVideo(\""+items.snippet.resourceId.videoId+"\")'><img class='channel-video-thumb' src='"+items.snippet.thumbnails.medium.url+"'></a><br><a class='channel-video-title' href='#' onclick='getVideo(\""+items.snippet.resourceId.videoId+"\")'>"+items.snippet.title+"</a></div></td></tr>").appendTo("tbody.playlist");
+				  $("tbody.playlist a").click(function() {
+					  $("tbody.playlist tr.selected").removeClass("selected");
+					  $(this).closest("tr").addClass("selected");
+				  });
+				  if(vid == 0) {
+					  $("tbody.playlist tr:first-of-type").addClass("selected");
+				  }
+				  vid++;
+			  });
+		  },
+		  error: function() {
+			  alert("An error occurred");
+		  }
+	  });
+}
+
 function showMore() {
 	$.ajax({
 		  url: "https://www.googleapis.com/youtube/v3/playlistItems?playlistId="+uploadPlaylist+"&key="+key+"&part=snippet&maxResults=30&pageToken="+nextPage, 
@@ -231,9 +354,17 @@ function keyWordsearch(){
 
 function makeRequest() {
 	var q = $('#query').val();
+	if(q == "") {
+		alert("Please enter a search query.");
+		return false;
+	}
 	var max;
-	if(searchType == "video") {
+	if(searchType == "video" && searchType == "all") {
 		max = 20;
+	}
+	else if(searchType == "all") {
+		searchType == "";
+		max = 18;
 	}
 	else {
 		max = 12;
@@ -244,26 +375,41 @@ function makeRequest() {
 			part: 'snippet', 
 			maxResults: max
 	});
-	request.execute(function(response)  {                                                                                    
+	request.execute(function(response)  {                                                             
 			$('#results').empty()
 			$("#search-results").html("Search Results");
 			var srchItems = response.result.items;
-			console.log(srchItems);
-			console.log(response.items);
+			var kind;
 			$.each(srchItems, function(index, item) {
-				if(searchType == "video") {
+				if(searchType == "all") {
+					kindAPI = item.id.kind;
+					kind = kindAPI.replace("youtube#", "");
+				}
+				else {
+					kind = searchType;
+				}
+				if(kind == "video") {
 					vidTitle = "<h4>"+item.snippet.title+"</h4>";  
 					vidThumburl = item.snippet.thumbnails.high.url;
 					id = item.id.videoId;
-					vidThumbimg = '<img id="thumb" src="'+vidThumburl+'" alt="No  Image Available.">';
-					$('#results').append("<a onclick=\'getVideo(\""+id+"\")'>" + vidTitle + "</a><br><a href='#' onclick=\'getVideo(\""+id+"\")'>" + vidThumbimg + "</a><hr>"); 
+					vidThumbimg = '<img id="thumb" src="'+vidThumburl+'" alt="No image available.">';
+					$('#results').append("<a onclick=\'getVideo(\""+id+"\")'>" + vidTitle + "</a><h4>Uploaded by <a href='#' onclick=\"getChannel('"+item.snippet.channelId+"')\">"+item.snippet.channelTitle+"</a></h4><br><a href='#' onclick=\'getVideo(\""+id+"\")'>" + vidThumbimg + "</a><hr>").click(function() {
+						isPlaylist = false;
+					});
 				}
-				else {
+				else if(kind == "channel") {
 					channelName = item.snippet.title;  
 					channelImage = item.snippet.thumbnails.default.url;
 					id = item.id.channelId;
 					channelThumb = '<img class="channel-thumb" src="'+channelImage+'" alt="'+channelName+'">';
 					$('#results').append("<a href='#' onclick=\'getChannel(\""+id+"\")'><span class='channel-title'>" + channelName + "</span><br>" + channelThumb + "</a><hr>");
+				}
+				else if(kind == "playlist") {
+					playlistTitle = "<h4>Playlist: "+item.snippet.title+"</h4>";  
+					PLImage = item.snippet.thumbnails.high.url;
+					id = item.id.playlistId;
+					PLThumb = '<img id="thumb" src="'+PLImage+'" alt="No image available.">';
+					$('#results').append("<a onclick=\'getPlaylist(\""+id+"\")'>" + playlistTitle + "</a><h4>Uploaded by <a href='#' onclick=\"getChannel('"+item.snippet.channelId+"')\">"+item.snippet.channelTitle+"</a></h4><br><a href='#' onclick=\'getPlaylist(\""+id+"\")'>" + PLThumb + "</a><hr>");
 				}
 			})  
 	})  

@@ -165,7 +165,7 @@ a {
 	right: 3px;
 }
 .switch img[src$="left.jpg"] {
-	left: 10px;
+	left: 29px;
 	height: 380px;
 	bottom: 10px;
 	position: relative;
@@ -173,7 +173,7 @@ a {
 }
 .switch img[src$="right.jpg"] {
 	height: 380px;
-	right: 14px;
+	right: 29px;
 	bottom: 12px;
 	position: relative;
 	float: right;
@@ -336,10 +336,6 @@ label {
 	white-space: nowrap;
 	vertical-align: middle;
 }
-.jumbotron {
-	margin: 80px 0;
-	text-align: center;
-}
 .container, .navbar-fixed-bottom .container, .navbar-fixed-top .container, .navbar-static-top .container, .span12 {
 	width: 940px;
 }
@@ -460,10 +456,6 @@ button, input, label, select, textarea {
 	white-space: nowrap;
 	vertical-align: middle;
 }
-.jumbotron {
-	margin: 80px 0;
-	text-align: center;
-}
 .container, .navbar-fixed-bottom .container, .navbar-fixed-top .container, .navbar-static-top .container, .span12 {
 	width: 940px;
 }
@@ -486,7 +478,7 @@ button, input, label, select, textarea {
 .img-polaroid, body, select {
 	background-color: #fff;
 }
-#search-type {
+#search-type, #id-type {
 	width: 200px;
 	height: 30px;
 }
@@ -525,4 +517,40 @@ table.subscriptions  {
 	display: inline-block;
 	overflow: hidden;
 	text-overflow: ellipsis;
+}
+.views {
+	font-size: 20px;
+	display: block;
+}
+a.trending {
+	font-size: 20px;
+	display: block;
+	width: 14%;
+	margin-left: 410px;
+}
+#logo-link {
+	top: 30px;
+	margin-left: 285px;
+	position: relative;
+}
+#playlist-box {
+	width: 24.1%;
+	height: 400px;
+	overflow: auto;
+	position: absolute;
+	border: 1px solid;
+	background-color: white;
+	top: 0px;
+	border-radius: 2px;
+	left: 950px;
+}
+tr.selected {
+	background-color: rgba(102, 102, 102, 1);
+}
+tr.selected a {
+	color: white !important;
+}
+.video-description:not(.views) {
+	max-height: 500px;
+	overflow: auto;
 }
