@@ -80,9 +80,6 @@ function showVideo(e) {
 		$("#yt-frame").attr("src", "https://www.youtube.com/embed/"+e+"/")
 	}
 	else {
-		if($("#playlist-box").length) {
-			$("#playlist-box").remove();
-		}
 		if($(".switch").length) {
 			$(".switch").remove();
 		}
