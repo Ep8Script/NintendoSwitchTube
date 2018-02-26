@@ -6,6 +6,19 @@ var subs;
 var nextPage;
 var sending = false;
 var loading = false;
+var month = new Array();
+month[0] = "Jan";
+month[1] = "Feb";
+month[2] = "Mar";
+month[3] = "Apr";
+month[4] = "May";
+month[5] = "Jun";
+month[6] = "Jul";
+month[7] = "Aug";
+month[8] = "Sept";
+month[9] = "Oct";
+month[10] = "Nov";
+month[11] = "Dec";
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
@@ -40,10 +53,13 @@ function getVideo(e) {
 					$("#query").val("");
 					$(".video-description").remove();
 					channelIcon(data.items[0].snippet.channelId);
+					var timestamp = new Date(Date.parse(data.items[0].snippet.publishedAt));
+					var published = "Published on "+month[timestamp.getMonth()]+" "+timestamp.getDate()+", "+timestamp.getFullYear();
+					$("<p class='video-description'><b>"+published+"</b></p>").insertAfter("#ytvideo");
 					var description = data.items[0].snippet.description;
 					description = description.replace(/\n/g, "<br>");
 					description = description.replace(/((http|https|ftp):\/\/[\w?=&.\/-;#~%-]+(?![\w\s?&.\/;#~%"=-]*>))/g, '<a href="$1">$1</a>');
-					$("<p class='video-description'>"+description+"</p>").insertAfter("#ytvideo");
+					$("<p class='video-description'>"+description+"</p>").insertAfter(".video-description");
 		  },
 		  error: function() {
 			  alert("An error occurred");
@@ -76,6 +92,34 @@ function VID() {
 	$("#videourl").val();
 	getVideo($("#videourl").val());
 	return false;
+}
+
+function timeSince(date) {
+
+  var seconds = Math.floor((new Date() - date) / 1000);
+
+  var interval = Math.floor(seconds / 31536000);
+
+  if (interval > 1) {
+    return interval + " years";
+  }
+  interval = Math.floor(seconds / 2592000);
+  if (interval > 1) {
+    return interval + " months";
+  }
+  interval = Math.floor(seconds / 86400);
+  if (interval > 1) {
+    return interval + " days";
+  }
+  interval = Math.floor(seconds / 3600);
+  if (interval > 1) {
+    return interval + " hours";
+  }
+  interval = Math.floor(seconds / 60);
+  if (interval > 1) {
+    return interval + " minutes";
+  }
+  return Math.floor(seconds) + " seconds";
 }
 
 var UAString = navigator.userAgent;
