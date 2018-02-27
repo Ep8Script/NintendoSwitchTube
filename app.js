@@ -133,7 +133,7 @@ var gUA = /Mozilla\/5\.0 \(Nintendo Switch; .*\) AppleWebKit\/601\.6 \(KHTML, li
 var isSwitch = UAString.match(gUA);
 $(document).ready(function() {
 	if(UAString.match(UA)) {
-		alert("Sorry, SwitchTube will not work in this browser applet. Please open the web browser through Facebook in your Social Media Settings and navigate to this website from there.");
+		alert("Sorry, SwitchTube will not properly work in this browser applet. Please open the web browser through Facebook in your Social Media Settings and navigate to this website from there.");
 	}
 	$.ajax({
 		  type: "GET",
