@@ -562,3 +562,6 @@ tr.selected a {
 .channel-image img {
 	height: 50px;
 }
+#playlist-box.inFrame {
+	left: 850px !important;
+}
