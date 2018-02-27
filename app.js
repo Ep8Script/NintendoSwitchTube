@@ -105,7 +105,7 @@ function channelIcon(e) {
 				 return false;
 			  });
 			  if(inFrame && isSwitch) {
-					$(".video-description b").attr("style", "margin-left: 140px;");
+					$(".video-description b").attr("style", "margin-left: 90px;");
 			  }
 		  },
 	  });
