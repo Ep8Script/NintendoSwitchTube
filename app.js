@@ -96,7 +96,11 @@ function channelIcon(e) {
 		  url: "https://content.googleapis.com/youtube/v3/channels?part=snippet&id="+e+"&key="+key, 
 		  dataType: "json",
 		  success: function(data) {
-			  $('<p class="video-description" style="display: block;"><a href="#" onclick="getChannel(\''+e+'\')"><img style="height: 50px; position: relative;" src="'+data.items[0].snippet.thumbnails.medium.url+'"></a><a style="left: 5px; font-size: 15px; position: relative;" href="#" onclick="getChannel(\''+e+'\')">'+data.items[0].snippet.title+'</a></p>').insertAfter("#ytvideo");
+			  $('<p class="video-description channel-image" id="'+e+'"><a href="#"><img src="'+data.items[0].snippet.thumbnails.medium.url+'"></a><a  href="#">'+data.items[0].snippet.title+'</a></p>').insertAfter("#ytvideo");
+			  $(".channel-image a").click(function() {
+				 getChannel($(this).parent().attr("id"));
+				 return false;
+			  });
 		  },
 	  });
 }
@@ -390,9 +394,11 @@ function makeRequest() {
 					vidThumburl = item.snippet.thumbnails.high.url;
 					id = item.id.videoId;
 					vidThumbimg = '<img id="thumb" src="'+vidThumburl+'" alt="No image available.">';
-					$('#results').append("<a onclick=\'getVideo(\""+id+"\")'>" + vidTitle + "</a><h4>Uploaded by <a href='#' onclick=\"getChannel('"+item.snippet.channelId+"')\">"+item.snippet.channelTitle+"</a></h4><br><a href='#' onclick=\'getVideo(\""+id+"\")'>" + vidThumbimg + "</a><hr>");
-					$("#results a").click(function() {
+					$('#results').append("<div class='result' id='"+id+"'><a class='get-video'>" + vidTitle + "</a><h4>Uploaded by <a href='#' onclick=\"getChannel('"+item.snippet.channelId+"')\">"+item.snippet.channelTitle+"</a></h4><br><a class='get-video' href='#'>" + vidThumbimg + "</a></div><hr>");
+					$("#results .result:last-of-type .get-video").click(function() {
 						isPlaylist = false;
+						getVideo($(this).parent().attr("id"));
+						return false;
 					});
 				}
 				else if(kind == "channel") {
@@ -400,14 +406,22 @@ function makeRequest() {
 					channelImage = item.snippet.thumbnails.default.url;
 					id = item.id.channelId;
 					channelThumb = '<img class="channel-thumb" src="'+channelImage+'" alt="'+channelName+'">';
-					$('#results').append("<a href='#' onclick=\'getChannel(\""+id+"\")'><span class='channel-title'>" + channelName + "</span><br>" + channelThumb + "</a><hr>");
+					$('#results').append("<div class='result' id='"+id+"'><a class='get-channel' href='#'><span class='channel-title'>" + channelName + "</span><br>" + channelThumb + "</a></div><hr>");
+					$("#results .result:last-of-type .get-channel").click(function() {
+						getChannel($(this).parent().attr("id"));
+						return false;
+					});
 				}
 				else if(kind == "playlist") {
 					playlistTitle = "<h4>Playlist: "+item.snippet.title+"</h4>";  
 					PLImage = item.snippet.thumbnails.high.url;
 					id = item.id.playlistId;
 					PLThumb = '<img id="thumb" src="'+PLImage+'" alt="No image available.">';
-					$('#results').append("<a onclick=\'getPlaylist(\""+id+"\")'>" + playlistTitle + "</a><h4>Uploaded by <a href='#' onclick=\"getChannel('"+item.snippet.channelId+"')\">"+item.snippet.channelTitle+"</a></h4><br><a href='#' onclick=\'getPlaylist(\""+id+"\")'>" + PLThumb + "</a><hr>");
+					$('#results').append("<div class='result' id='"+id+"'><a class='get-playlist'>" + playlistTitle + "</a><h4>Uploaded by <a href='#' onclick=\"getChannel('"+item.snippet.channelId+"')\">"+item.snippet.channelTitle+"</a></h4><br><a class='get-playlist' href='#'>" + PLThumb + "</a></div><hr>");
+					$("#results .result:last-of-type .get-playlist").click(function() {
+						getPlaylist($(this).parent().attr("id"));
+						return false;
+					});
 				}
 			})  
 	})  

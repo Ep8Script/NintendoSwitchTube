@@ -554,3 +554,11 @@ tr.selected a {
 	max-height: 500px;
 	overflow: auto;
 }
+.channel-image a:last-of-type {
+	position: relative;
+	left: 5px;
+	font-size: 15px;
+}
+.channel-image img {
+	height: 50px;
+}
