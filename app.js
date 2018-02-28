@@ -56,7 +56,6 @@ function getVideo(e) {
 					}, 200);
 					$("#search-results").empty();
 					$("#results").empty();
-					$("#query").val("");
 					$(".video-description").remove();
 					$(".span12 hr").remove();
 					channelIcon(data.items[0].snippet.channelId);
@@ -224,7 +223,6 @@ function getChannel(e) {
 			  200);
 			  $("#search-results").empty();
 			  $("#results").empty();
-			  $("#query").val("");
 			  uploadPlaylist = data.items[0].contentDetails.relatedPlaylists.uploads;
 			  $(".video-description").remove();
 			  var description = data.items[0].snippet.description;
@@ -284,7 +282,6 @@ function showChannel(e) {
 function getPlaylist(e) {
 	$("#search-results").empty();
 	$("#results").empty();
-	$("#query").val("");
 	if(!isPlaylist) {
 		if($(".switch").length) {
 			$(".switch").remove();
