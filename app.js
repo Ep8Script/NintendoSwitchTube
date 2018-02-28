@@ -196,6 +196,9 @@ $(document).ready(function() {
 	});
 	$("#vidID").submit(VID);
 	$("#search-yt").submit(keyWordsearch);
+	$(".creator").click(function() {
+		getChannel("UCAKiLt--UAgXSC3aXaQzaAw");
+	});
 });
 function getChannel(e) {
 	if(!loading) {
