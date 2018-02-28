@@ -140,7 +140,7 @@ $(document).ready(function() {
 		  url: "https://script.google.com/macros/s/AKfycbz-XHPvv442CXLNXfiGdc3S2wb0UZD-9bTrorF9caO7GgKGNTbn/exec?responses=true", 
 		  dataType: "json",
 		  success: function(data) {
-			  $('<p style="color: red;"><span>'+data.number+'</span> messages received</p>').insertAfter(".feedback-form h3");
+			  $('<p style="color: red;"><span>'+data.number+'</span> feedback messages received</p>').insertAfter(".feedback-form h3");
 		  },
 	  });
 	  $.ajax({
