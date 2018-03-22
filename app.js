@@ -111,11 +111,6 @@ function channelIcon(e) {
 	  });
 }
 
-function popUp() {
-	window.nx.footer.setDefaultAssign("X", "Hello");
-	alert(window.nx);
-}
-
 function VID() {
 	$("#videourl").val();
 	var value = $("#id-type").val();
