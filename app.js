@@ -111,6 +111,10 @@ function channelIcon(e) {
 	  });
 }
 
+function popUp() {
+	nx.open2ButtonDialog("I'm a message!", "Cancel", "OK!");
+}
+
 function VID() {
 	$("#videourl").val();
 	var value = $("#id-type").val();
