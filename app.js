@@ -112,7 +112,8 @@ function channelIcon(e) {
 }
 
 function popUp() {
-	nx.open2ButtonDialog("I'm a message!", "Cancel", "OK!");
+	window.nx.footer.setDefaultAssign("X", "Hello");
+	alert(window.nx);
 }
 
 function VID() {
