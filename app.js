@@ -135,8 +135,6 @@ var UA = /Mozilla\/5\.0 \(Nintendo Switch; WifiWebAuthApplet\) AppleWebKit\/601\
 var gUA = /Mozilla\/5\.0 \(Nintendo Switch; .*\) AppleWebKit\/601\.6 \(KHTML, like Gecko\) NF\/.* NintendoBrowser\/.*/
 var isSwitch = UAString.match(gUA);
 $(document).ready(function() {
-	$("#more-pages").hide();
-	$("#more-pages a").hide();
 	if(UAString.match(UA)) {
 		alert("Sorry, SwitchTube will not properly work in this browser applet. Please open the web browser through Facebook in your Social Media Settings and navigate to this website from there.");
 	}
