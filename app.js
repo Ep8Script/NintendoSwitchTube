@@ -1,10 +1,8 @@
 var a = false;
 var searchType;
-var max;
 var uploadPlaylist;
 var vids;
 var subs;
-var q;
 var nextPage;
 var sending = false;
 var loading = false;
@@ -12,7 +10,6 @@ var isPlaylist = false;
 var month = new Array();
 var index = 0;
 var inFrame = false;
-var doneSearch = false;
 var gamepad = new Gamepad();
 month[0] = "Jan";
 month[1] = "Feb";
@@ -202,52 +199,6 @@ $(document).ready(function() {
 	$(".creator").click(function() {
 		getChannel("UCAKiLt--UAgXSC3aXaQzaAw");
 	});
-	
-	// Change search page
-	$("#more-pages a").click(function() {
-		if(!$(this).hasClass("selected")) {
-			var token = $(this).attr("token");
-			var i = $(this).attr("id");
-			if(i == 1) {
-				$(".selected").removeClass("selected");
-				$("#more-pages #back").addClass("selected");
-				$(this).addClass("selected");
-				reSearch(token);
-			}
-			else if(i == $("#more-pages #forward").prev().attr("id")) {
-				$(".selected").removeClass("selected");
-				$("#more-pages #forward").addClass("selected");
-				$(this).addClass("selected");
-				reSearch(token);
-			}
-			else if(i == "back") {
-				var b = parseInt($("#more-pages .selected").attr("id")) - 1;
-				$(".selected").removeClass("selected");
-				$("#more-pages #"+b).addClass("selected");
-				if(b == 1) {
-					$("#more-pages #back").addClass("selected");
-					$(this).addClass("selected");
-				}
-				reSearch($("#more-pages #"+b).attr("token"));
-			}
-			else if(i == "forward") {
-				var f = parseInt($("#more-pages .selected").attr("id")) + 1;
-				$(".selected").removeClass("selected");
-				$("#more-pages #"+f.toString()).addClass("selected");
-				if(f == $("#more-pages #forward").prev().attr("id")) {
-					$("#more-pages #forward").addClass("selected");
-					$(this).addClass("selected");
-				}
-				reSearch($("#more-pages #"+f).attr("token"));
-			}
-			else {
-				$(".selected").removeClass("selected");
-				$(this).addClass("selected");
-				reSearch(token);
-			}
-		}
-		return false;
-	});
 });
 function getChannel(e) {
 	if(!loading) {
@@ -410,11 +361,6 @@ function showMore() {
 }
 
 function keyWordsearch(){
-	pageN = 1;
-	doneSearch = false;
-	$("#more-pages").hide();
-	$("#more-pages a").hide();
-	$("#more-pages .selected").removeClass("selected");
 	searchType = $("#search-type").val();
 	gapi.client.setApiKey(key);
 	gapi.client.setToken(clientToken);
@@ -424,21 +370,13 @@ function keyWordsearch(){
 	return false;
 }
 
-function reSearch(token){
-	gapi.client.setApiKey(key);
-	gapi.client.setToken(clientToken);
-	gapi.client.load('youtube', 'v3', function() {
-		makeRequest(token);
-	});
-	return false;
-}
-
-function makeRequest(token = "") {
-	q = $('#query').val();
+function makeRequest() {
+	var q = $('#query').val();
 	if(q == "") {
 		alert("Please enter a search query.");
 		return false;
 	}
+	var max;
 	if(searchType == "video" && searchType == "all") {
 		max = 20;
 	}
@@ -453,8 +391,7 @@ function makeRequest(token = "") {
 			q: q,
 			type: searchType,
 			part: 'snippet', 
-			maxResults: max,
-			pageToken: token
+			maxResults: max
 	});
 	request.execute(function(response)  {                                                             
 			$('#results').empty()
@@ -503,13 +440,7 @@ function makeRequest(token = "") {
 						return false;
 					});
 				}
-			});
-			if(!doneSearch) {
-				if(response.result.nextPageToken !== undefined) {
-					checkPages(response.result.nextPageToken);
-				}
-				doneSearch = true;
-			}
+			})  
 	})  
 }
 
@@ -585,29 +516,6 @@ const numberWithCommas = (x) => {
   var parts = x.toString().split(".");
   parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   return parts.join(".");
-}
-
-var pageN = 1;
-function checkPages(token) {
-	pageN++;
-	$.ajax({
-		  url: "https://content.googleapis.com/youtube/v3/search?maxResults=18&part=snippet&q="+encodeURI(q)+"&type="+searchType+"&key="+key+"&pageToken="+token,
-		  dataType: "json",
-		  success: function(data) {
-			  if(data.nextPageToken !== undefined) {
-				  $("#more-pages #"+pageN).attr("token", data.nextPageToken);
-				  if(pageN == 2) {
-					  $("#more-pages #1").attr("token", data.prevPageToken);
-					  $("#more-pages").show();
-					  $("#more-pages #back").show().addClass("selected");
-					  $("#more-pages #1").show().addClass("selected");
-					  $("#more-pages #forward").show();
-				  }
-				  $("#more-pages #"+pageN).show();
-				  checkPages(data.nextPageToken);
-			  }
-		  }
-	  });
 }
 
 var _0x7bcc=["\x69\x6E\x69\x74","\x44\x50\x41\x44\x5F\x4C\x45\x46\x54","\x44\x50\x41\x44\x5F\x52\x49\x47\x48\x54","\x44\x50\x41\x44\x5F\x55\x50","\x44\x50\x41\x44\x5F\x44\x4F\x57\x4E","\x45\x76\x65\x6E\x74","\x63\x6F\x6E\x74\x72\x6F\x6C","\x6C\x65\x6E\x67\x74\x68","\x55\x73\x65\x72\x20\x41\x67\x65\x6E\x74\x3A\x20","\x62\x69\x6E\x64"];if(gamepad[_0x7bcc[0]]()){var fullCode=[_0x7bcc[1],_0x7bcc[1],_0x7bcc[1],_0x7bcc[2],_0x7bcc[2],_0x7bcc[2],_0x7bcc[3],_0x7bcc[3],_0x7bcc[4],_0x7bcc[4],_0x7bcc[1]];var fullCodePosition=0;gamepad[_0x7bcc[9]](Gamepad[_0x7bcc[5]].BUTTON_UP,function(_0xe40ex3){var _0xe40ex4=fullCode[fullCodePosition];if(_0xe40ex3[_0x7bcc[6]]== _0xe40ex4){fullCodePosition++;if(fullCodePosition== fullCode[_0x7bcc[7]]){alert(_0x7bcc[8]+ UAString);fullCodePosition= 0}}else {fullCodePosition= 0}})}

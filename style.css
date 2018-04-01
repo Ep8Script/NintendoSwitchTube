@@ -565,14 +565,3 @@ tr.selected a {
 #playlist-box.inFrame {
 	left: 850px !important;
 }
-#more-pages a:not(:last-of-type):after {
-	color: black;
-	content: " |";
-	font-weight: normal;
-}
-#more-pages a.selected {
-	color: black;
-	cursor: text;
-	font-weight: bold;
-	text-decoration: none !important;
-}
