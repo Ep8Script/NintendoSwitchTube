@@ -565,3 +565,8 @@ tr.selected a {
 #playlist-box.inFrame {
 	left: 850px !important;
 }
+.patreon ul {
+	list-style-position: inside;
+	margin-left: 0px;
+	margin-top: 6px;
+}
