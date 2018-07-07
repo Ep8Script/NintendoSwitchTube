@@ -457,7 +457,7 @@ function myChannel() {
 function loadSubscriptions(e) {
 	$("#subscriptions").show();
 	$.ajax({
-		  url: "https://www.googleapis.com/youtube/v3/subscriptions?mine=true&access_token="+clientToken+"&part=snippet&maxResults=100", 
+		  url: "https://www.googleapis.com/youtube/v3/subscriptions?mine=true&access_token="+clientToken+"&part=snippet&maxResults=50", 
 		  dataType: "json",
 		  success: function(data) {
 			  subs = 0;
