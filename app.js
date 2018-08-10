@@ -183,7 +183,7 @@ $(document).ready(function() {
 		var value = this.value;
 		if(value == "video") {
 			$("#vidID .get-video").attr("placeholder", "Enter YouTube Video ID");
-			$(".example").text("Example: zj93Imivr54");
+			$(".example").html('<a href="#" onclick="getVideo(\'dQw4w9WgXcQ\')">dQw4w9WgXcQ</a>');
 		}
 		else if(value == "channel") {
 			$("#vidID .get-video").attr("placeholder", "Enter YouTube Channel ID");
