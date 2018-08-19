@@ -570,3 +570,15 @@ tr.selected a {
 	margin-left: 0px;
 	margin-top: 6px;
 }
+#feedback-name {
+	width: 25%;
+}
+#feedback-message {
+	height: 170px;
+	width: 45%;
+}
+#send-feedback {
+	font-size: 20px;
+	height: 50px;
+	width: 200px;
+}

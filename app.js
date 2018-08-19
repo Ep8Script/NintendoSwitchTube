@@ -1,9 +1,5 @@
+var searchType, uploadPlaylist, vids, subs, nextPage;
 var a = false;
-var searchType;
-var uploadPlaylist;
-var vids;
-var subs;
-var nextPage;
 var sending = false;
 var loading = false;
 var isPlaylist = false;
@@ -47,7 +43,7 @@ function getVideo(e) {
 		  url: "https://www.googleapis.com/youtube/v3/videos?id="+vidURL+"&key="+key+"&part=snippet%2Cstatistics", 
 		  dataType: "json",
 		  success: function(data){
-				   document.title = data.items[0].snippet.title+" - Nintendo SwitchTube";
+					document.title = data.items[0].snippet.title+" - SwitchTube";
 					if($(".title").length) {
 						$(".title").remove();
 					}
@@ -133,7 +129,7 @@ var gUA = /Mozilla\/5\.0 \(Nintendo Switch; .*\) AppleWebKit\/601\.6 \(KHTML, li
 var isSwitch = UAString.match(gUA);
 $(document).ready(function() {
 	if(UAString.match(UA)) {
-		alert("Sorry, SwitchTube will not properly work in this browser applet. Please open the web browser through Facebook in your Social Media Settings and navigate to this website from there.");
+		alert("Sorry, SwitchTube will not properly work in this browser applet. Please open the web browser through Facebook in your Social Media Settings and navigate to this page from there.");
 	}
 	$.ajax({
 		  type: "GET",
@@ -183,11 +179,11 @@ $(document).ready(function() {
 		var value = this.value;
 		if(value == "video") {
 			$("#vidID .get-video").attr("placeholder", "Enter YouTube Video ID");
-			$(".example").html('<a href="#" onclick="getVideo(\'dQw4w9WgXcQ\')">dQw4w9WgXcQ</a>');
+			$(".example").html('Example: <a href="#" onclick="getVideo(\'4KRdmXcJWQU\')">4KRdmXcJWQU</a>');
 		}
 		else if(value == "channel") {
 			$("#vidID .get-video").attr("placeholder", "Enter YouTube Channel ID");
-			$(".example").text("Example: UCDWIvJwLJsE4LG1Atne2blQ");
+			$(".example").text('Example: <a href="#" onclick="getChannel(\'UCDWIvJwLJsE4LG1Atne2blQ\')">UCAKiLt--UAgXSC3aXaQzaAw</a>');
 		}
 		else if(value == "playlist") {
 			$("#vidID .get-video").attr("placeholder", "Enter YouTube Playlist ID");
