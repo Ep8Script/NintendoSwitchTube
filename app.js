@@ -85,7 +85,7 @@ function showVideo(e) {
 		$("#custom").show();
 		$("<div class='switch'></div>").appendTo("#ytvideo");
 		$('<img src="img/joycon_left.jpg">').appendTo(".switch");
-		$('<iframe id="yt-frame" width="640" height="360" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>').attr("src", "https://www.youtube.com/embed/"+e+"/").appendTo(".switch");
+		$('<iframe id="yt-frame" width="640" height="360" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>').attr("src", "https://www.youtube.com/embed/"+e+"/?vq=hd720").appendTo(".switch");
 		$('<img src="img/joycon_right.jpg">').appendTo(".switch");
 	}
 }
@@ -453,7 +453,7 @@ function myChannel() {
 function loadSubscriptions(e) {
 	$("#subscriptions").show();
 	$.ajax({
-		  url: "https://www.googleapis.com/youtube/v3/subscriptions?mine=true&access_token="+clientToken+"&part=snippet&maxResults=50", 
+		  url: "https://www.googleapis.com/youtube/v3/subscriptions?part=&access_token="+clientToken+"&part=snippet&maxResults=50", 
 		  dataType: "json",
 		  success: function(data) {
 			  subs = 0;
