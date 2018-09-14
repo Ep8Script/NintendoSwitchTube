@@ -522,7 +522,7 @@ table.subscriptions  {
 	font-size: 20px;
 	display: block;
 }
-a.trending, .direct {
+a.trending {
 	font-size: 20px;
 	display: block;
 	width: 16%;
