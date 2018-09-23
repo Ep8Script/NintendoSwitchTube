@@ -179,7 +179,7 @@ $(document).ready(function() {
 		var value = this.value;
 		if(value == "video") {
 			$("#vidID .get-video").attr("placeholder", "Enter YouTube Video ID");
-			$(".example").html('Example: <a href="#" onclick="getVideo(\'4KRdmXcJWQU\')">4KRdmXcJWQU</a>');
+			$(".example").html('Example: <a href="#" onclick="getVideo(\'gSRFqpheg6Y\')">gSRFqpheg6Y</a>');
 		}
 		else if(value == "channel") {
 			$("#vidID .get-video").attr("placeholder", "Enter YouTube Channel ID");
