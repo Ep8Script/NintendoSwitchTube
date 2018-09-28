@@ -522,11 +522,11 @@ table.subscriptions  {
 	font-size: 20px;
 	display: block;
 }
-a.trending {
+.birthday {
 	font-size: 20px;
 	display: block;
-	width: 16%;
-	margin-left: 410px;
+	width: 50%;
+	margin-left: 235px;
 }
 #logo-link {
 	top: 30px;
