@@ -582,3 +582,9 @@ tr.selected a {
 	height: 50px;
 	width: 200px;
 }
+.message {
+	font-size: 18px;
+	margin-left: 55px;
+	margin-top: 20px;
+	width: 90%;
+}
